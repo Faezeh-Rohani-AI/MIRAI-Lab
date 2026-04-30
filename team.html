@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team | AI in Medicine Innovations Research</title>
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpolygon points='60,8 108,34 108,86 60,112 12,86 12,34' fill='%231b5e3a'/%3E%3Cpath d='M44 80V40h10v16h12V40h10v40H66V64H54v16H44Z' fill='%23ffffff'/%3E%3Cpath d='M22 60h14l6-12 9 24 8-30 9 22h12' fill='none' stroke='%23f6b800' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <style>
+        :root {
+            --primary: #1b5e3a;
+            --primary-dark: #0f3d24;
+            --primary-soft: #e6f1ea;
+            --primary-tint: #f0f8f3;
+            --link: #1b7a45;
+            --link-hover: #0f5430;
+            --accent-gold: #f6b800;
+            --ink: #2b2b2b;
+            --ink-soft: #4a4a4a;
+            --muted: #6b7a8a;
+            --line: #d6e4dc;
+            --bg: #ffffff;
+            --shadow: rgba(15, 61, 36, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        a:hover,
+        a:focus {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        img,
+        svg {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1200px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        /* === TOP AFFILIATION BAR === */
+        .top-bar {
+            background: var(--primary-dark);
+            color: #ffffff;
+            font-size: 14px;
+            padding: 8px 0;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* === SITE HEADER === */
+        .site-header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--line);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+        }
+
+        .nav-shell {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            min-height: 110px;
+            position: relative;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: var(--primary);
+            min-width: 280px;
+        }
+
+        .brand-mark {
+            width: 88px;
+            height: 88px;
+            flex: 0 0 88px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-line-1 {
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--primary-dark);
+            letter-spacing: 0.2px;
+        }
+
+        .brand-line-2 {
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+            color: var(--primary);
+            letter-spacing: 0.2px;
+        }
+
+        /* === MAIN NAV === */
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .main-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-dark);
+            font-weight: 500;
+            font-size: 17px;
+            padding: 10px 2px;
+            border-bottom: 3px solid transparent;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .main-nav a:hover {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        .main-nav a.is-active {
+            color: var(--link);
+            border-bottom-color: var(--link);
+        }
+
+        .main-nav .icon {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .main-nav .has-caret::after {
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 6px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid currentColor;
+        }
+
+        /* === DROPDOWN === */
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            min-width: 240px;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            box-shadow: 0 10px 28px rgba(15, 61, 36, 0.12);
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px);
+            transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+            z-index: 50;
+        }
+
+        .nav-item:hover>.dropdown,
+        .nav-item:focus-within>.dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            color: var(--ink);
+            font-size: 16px;
+            font-weight: 500;
+            border-bottom: none;
+            border-radius: 0;
+        }
+
+        .dropdown a:hover {
+            background: var(--primary-soft);
+            color: var(--link-hover);
+            text-decoration: none;
+            border-bottom-color: transparent;
+        }
+
+        .dropdown .icon {
+            width: 18px;
+            height: 18px;
+            color: var(--muted);
+            flex: 0 0 18px;
+        }
+
+        /* === PAGE TITLE STRIP === */
+        .page-title {
+            background: var(--primary-soft);
+            padding: 56px 0 64px;
+        }
+
+        .page-title .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .page-title h1 {
+            margin: 0;
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.5px;
+        }
+
+        .breadcrumb {
+            color: var(--ink-soft);
+            font-size: 15px;
+        }
+
+        .breadcrumb a {
+            color: var(--link);
+        }
+
+        .breadcrumb .sep {
+            color: var(--muted);
+            margin: 0 8px;
+        }
+
+        /* === TEAM SECTIONS === */
+        .section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .section--alt {
+            background: var(--primary-soft);
+        }
+
+        .section-hero {
+            padding: 70px 0 30px;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .section-hero h2 {
+            margin: 0;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+
+        .section-title {
+            margin: 0 0 50px;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 40px 30px;
+            justify-items: center;
+        }
+
+        .team-grid--center {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            justify-content: center;
+        }
+
+        .team-grid--two {
+            grid-template-columns: repeat(2, minmax(0, 240px));
+            justify-content: center;
+            gap: 40px 60px;
+        }
+
+        .team-grid--single {
+            grid-template-columns: minmax(220px, 320px);
+            justify-content: center;
+        }
+
+        .team-card {
+            text-align: center;
+            max-width: 240px;
+            width: 100%;
+        }
+
+        .photo-frame {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #c8d4e2, #8e9ead);
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 16px var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-frame .placeholder {
+            color: #ffffff;
+            opacity: 0.85;
+            width: 70%;
+            height: 70%;
+        }
+
+        .team-card__name {
+            display: block;
+            color: var(--link);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .team-card__name:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        .team-card__role {
+            color: var(--ink-soft);
+            font-size: 15px;
+            margin: 4px 0;
+            line-height: 1.45;
+        }
+
+        .team-card__affiliation {
+            color: var(--muted);
+            font-size: 14px;
+            font-style: italic;
+            margin: 4px 0 10px;
+            line-height: 1.45;
+        }
+
+        .team-card__links {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .team-card__links a {
+            color: var(--link);
+        }
+
+        /* === SOFTWARE DEVELOPERS LIST === */
+        .dev-list {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+
+        .dev-list li {
+            font-size: 17px;
+            color: var(--ink-soft);
+            line-height: 2.1;
+        }
+
+        .dev-list a {
+            color: var(--link);
+            font-weight: 500;
+        }
+
+        .dev-list a:hover {
+            color: var(--link-hover);
+        }
+
+        /* === FORMER MEMBERS LAYOUT === */
+        .former-section-title {
+            margin: 0 0 22px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+            text-align: left;
+        }
+
+        .former-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .former-card {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 26px 28px;
+            box-shadow: 0 4px 14px var(--shadow);
+            display: flex;
+            align-items: flex-start;
+            gap: 22px;
+        }
+
+        .former-card__photo {
+            flex: 0 0 110px;
+            width: 110px;
+            height: 130px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #c8d4e2, #8e9ead);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .former-card__photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .former-card__photo .placeholder {
+            width: 70%;
+            height: 70%;
+            color: #ffffff;
+            opacity: 0.85;
+        }
+
+        .former-card__body {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .former-card__name {
+            margin: 0 0 10px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.2;
+        }
+
+        .former-card__role {
+            margin: 0 0 8px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--link);
+        }
+
+        .former-card__affiliation {
+            margin: 0;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* === CONTRIBUTORS CARD === */
+        .contrib-card {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 28px 30px 30px;
+            box-shadow: 0 4px 14px var(--shadow);
+        }
+
+        .contrib-card__title {
+            margin: 0 0 18px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+        }
+
+        .contrib-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 12px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contrib-tag {
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 6px;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        /* === FOOTER === */
+        .site-footer {
+            background: #ffffff;
+            border-top: 1px solid var(--line);
+            padding: 60px 0 70px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1.4fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .footer-brand .brand-mark {
+            width: 100px;
+            height: 100px;
+            flex: 0 0 100px;
+        }
+
+        .footer-brand .brand-line-1 {
+            font-size: 24px;
+        }
+
+        .footer-brand .brand-line-2 {
+            font-size: 22px;
+        }
+
+        .footer-col h3 {
+            margin: 0 0 14px;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .footer-col p,
+        .footer-col address {
+            font-style: normal;
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 16px;
+            line-height: 1.85;
+        }
+
+        .footer-col a {
+            color: var(--link);
+        }
+
+        /* === BACK TO TOP === */
+        .back-to-top {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 6px;
+            background: var(--link);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(27, 122, 69, 0.35);
+            text-decoration: none;
+            z-index: 40;
+        }
+
+        .back-to-top:hover {
+            background: var(--link-hover);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1100px) {
+            .team-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 980px) {
+            .nav-shell {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 18px 0;
+                gap: 18px;
+                min-height: 0;
+            }
+
+            .main-nav {
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+
+            .dropdown {
+                right: auto;
+                left: 0;
+                min-width: 220px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .page-title h1 {
+                font-size: 34px;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .former-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-hero h2 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 26px;
+                margin-bottom: 36px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-bar .container {
+                justify-content: center;
+            }
+
+            .brand-mark {
+                width: 72px;
+                height: 72px;
+                flex: 0 0 72px;
+            }
+
+            .brand-line-1 {
+                font-size: 22px;
+            }
+
+            .brand-line-2 {
+                font-size: 18px;
+            }
+
+            .main-nav {
+                gap: 14px;
+            }
+
+            .main-nav a {
+                font-size: 15px;
+            }
+
+            .page-title {
+                padding: 40px 0 44px;
+            }
+
+            .page-title h1 {
+                font-size: 28px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .photo-frame {
+                width: 140px;
+                height: 140px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP AFFILIATION BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <a href="https://uskudar.edu.tr/en" target="_blank" rel="noopener">&Uuml;sk&uuml;dar University</a>
+        </div>
+    </div>
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+        <div class="container nav-shell">
+
+            <a class="brand" href="index.html" aria-label="AI in Medicine Innovations Research home">
+                <img class="brand-mark" src="assets/logo.png" alt="AI in Medicine Innovations Research logo" />
+                <div class="brand-text">
+                    <span class="brand-line-1">AI in Medicine Innovations</span>
+                    <span class="brand-line-2">Research</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" aria-label="Primary">
+                <a href="index.html">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 11l9-8 9 8" />
+                        <path d="M5 10v10h14V10" />
+                    </svg>
+                    Home
+                </a>
+                <a href="team.html" class="is-active">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="9" cy="8" r="3.2" />
+                        <circle cx="17" cy="9" r="2.6" />
+                        <path d="M3 19c.8-3 3.4-4.6 6-4.6s5.2 1.6 6 4.6" />
+                        <path d="M14.5 19c.6-2.2 2.6-3.4 4.5-3.4 1.2 0 2.2.4 2.9 1" />
+                    </svg>
+                    Team
+                </a>
+                <a href="#ai-events">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3.5" y="5" width="17" height="15" rx="1.5" />
+                        <path d="M3.5 10h17" />
+                        <path d="M8 3v4M16 3v4" />
+                    </svg>
+                    AI Events
+                </a>
+                <a href="#podcast">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="2" />
+                        <path d="M8.5 8.5a5 5 0 017 7" />
+                        <path d="M5.5 5.5a9 9 0 0113 13" />
+                    </svg>
+                    MedAI Podcast
+                </a>
+                <div class="nav-item">
+                    <a href="#research" class="has-caret" aria-haspopup="true" aria-expanded="false">
+                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="6" />
+                            <path d="M20 20l-4.4-4.4" />
+                        </svg>
+                        Research
+                    </a>
+                    <div class="dropdown" role="menu">
+                        <a href="#projects" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 4h11l3 3v13H5z" />
+                                <path d="M9 9h6M9 13h6M9 17h4" />
+                            </svg>
+                            Projects
+                        </a>
+                        <a href="#publications" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4 5a2 2 0 012-2h12v18H6a2 2 0 01-2-2V5z" />
+                                <path d="M8 7h8M8 11h8M8 15h6" />
+                            </svg>
+                            Publications
+                        </a>
+                        <a href="#openings" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 21V5a2 2 0 012-2h7l5 5v13" />
+                                <path d="M14 3v6h5" />
+                                <path d="M9 14h6M9 17h4" />
+                            </svg>
+                            Openings
+                        </a>
+                        <a href="https://github.com/" target="_blank" rel="noopener" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.12-1.47-1.12-1.47-.92-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.9 1.54 2.36 1.1 2.94.84.09-.65.35-1.1.64-1.35-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0112 6.8c.85.004 1.7.115 2.5.34 1.9-1.3 2.74-1.03 2.74-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z" />
+                            </svg>
+                            GitHub Repositories
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE TITLE STRIP -->
+    <section class="page-title" id="top">
+        <div class="container">
+            <h1>Team</h1>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a><span class="sep">/</span>
+                <span>Team</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- TEAM MEMBERS HERO -->
+    <section class="section-hero">
+        <div class="container">
+            <h2>Team Members</h2>
+        </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section class="section section--alt">
+        <div class="container">
+            <h3 class="section-title">Leadership</h3>
+            <div class="team-grid team-grid--two">
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/faezeh-rohani.jpg" alt="Faezeh Rohani, PhD"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="index.html" class="team-card__name">Faezeh Rohani, PhD</a>
+                    <p class="team-card__role">Director</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/andreas-muller.jpg" alt="Andreas M&uuml;ller, PhD"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#andreas-muller" class="team-card__name">Andreas M&uuml;ller, PhD</a>
+                    <p class="team-card__role">Clinical Validation Lead</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ACADEMIC ADVISORY BOARD -->
+    <section class="section">
+        <div class="container">
+            <h3 class="section-title">Faculty Members</h3>
+            <div class="team-grid team-grid--single">
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/ahmad-tafti.jpg" alt="Ahmad P. Tafti, PhD, FAMIA"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="https://aptafti.github.io/index.html" target="_blank" rel="noopener"
+                        class="team-card__name">Ahmad P. Tafti, PhD, FAMIA</a>
+                    <p class="team-card__role">Faculty Member and Academic Advisor</p>
+                    <p class="team-card__affiliation">University of Pittsburgh</p>
+                    <div class="team-card__links">
+                        <a href="https://aptafti.github.io/index.html" target="_blank" rel="noopener">About Ahmad P.
+                            Tafti, PhD, FAMIA</a>
+                        <a href="https://scholar.google.com/citations?user=NxeXUqwAAAAJ&amp;hl=en" target="_blank"
+                            rel="noopener">Google Scholar</a>
+                        <a href="https://www.linkedin.com/in/ahmadtafti" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- STUDENT MEMBERS AND DEVELOPMENT -->
+    <section class="section section--alt">
+        <div class="container">
+            <h3 class="section-title">PhD and M.Sc Students</h3>
+            <div class="team-grid">
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/matin-hamedi.jpg" alt="Matin Hamedi"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#matin-hamedi" class="team-card__name">Matin Hamedi</a>
+                    <p class="team-card__role">PhD Student</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/aniq-tariq.jpg" alt="Aniq Tariq"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#aniq-tariq" class="team-card__name">Aniq Tariq</a>
+                    <p class="team-card__role">M.Sc Student</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/nadia-ashraf.jpg" alt="Nadia Ashraf"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#nadia-ashraf" class="team-card__name">Nadia Ashraf</a>
+                    <p class="team-card__role">M.Sc Student</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/abdul-rehman.jpg" alt="Abdul Rehman"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#abdul-rehman" class="team-card__name">Abdul Rehman</a>
+                    <p class="team-card__role">M.Sc Student</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/yonesi-amirmoezz.jpg" alt="Yonesi Amirmoezz"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#yonesi-amirmoezz" class="team-card__name">Yonesi Amirmoezz</a>
+                    <p class="team-card__role">M.Sc Student</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/saman-saman.jpg" alt="Saman Saman"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#saman-saman" class="team-card__name">Saman Saman</a>
+                    <p class="team-card__role">M.Sc Student</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/aleyna-gore.jpg" alt="Aleyna G&ouml;re"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#aleyna-gore" class="team-card__name">Aleyna G&ouml;re</a>
+                    <p class="team-card__role">M.Sc Student</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH ASSISTANTS -->
+    <section class="section">
+        <div class="container">
+            <h3 class="section-title">Research Assistants</h3>
+            <div class="team-grid">
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/sayediman-mostafavi.jpg" alt="SayedIman Mostafavi"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#sayediman-mostafavi" class="team-card__name">SayedIman Mostafavi</a>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/waleed.jpg" alt="Waleed"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#waleed" class="team-card__name">Waleed</a>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/pouria-parhami.jpg" alt="Pouria Parhami"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#pouria-parhami" class="team-card__name">Pouria Parhami</a>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">IEEE Member</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/hanieh-alasti.jpg" alt="Hanieh Alasti"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#hanieh-alasti" class="team-card__name">Hanieh Alasti</a>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">IEEE Member</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/farnaz-rezvani.jpg" alt="Farnaz Rezvani"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#farnaz-rezvani" class="team-card__name">Farnaz Rezvani</a>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">IEEE Member, London, UK<br>(Brunel University of London Alumni)
+                    </p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/amin-rezaei.jpg" alt="Amin Rezaei"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#amin-rezaei" class="team-card__name">Amin Rezaei</a>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">IEEE Member</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/yushui-han.jpg" alt="Yushui Han"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#yushui-han" class="team-card__name">Yushui Han</a>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">University of Pittsburgh</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/payam-ebrahimifakhar.jpg" alt="Payam Ebrahimifakhar"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#payam-ebrahimifakhar" class="team-card__name">Payam Ebrahimifakhar</a>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <svg class="placeholder" viewBox="0 0 64 64" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="22" r="12" />
+                            <path d="M10 58c0-12 10-20 22-20s22 8 22 20" />
+                        </svg>
+                    </div>
+                    <span class="team-card__name" style="color: var(--muted);">Open Position</span>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <svg class="placeholder" viewBox="0 0 64 64" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="22" r="12" />
+                            <path d="M10 58c0-12 10-20 22-20s22 8 22 20" />
+                        </svg>
+                    </div>
+                    <span class="team-card__name" style="color: var(--muted);">Open Position</span>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <svg class="placeholder" viewBox="0 0 64 64" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="22" r="12" />
+                            <path d="M10 58c0-12 10-20 22-20s22 8 22 20" />
+                        </svg>
+                    </div>
+                    <span class="team-card__name" style="color: var(--muted);">Open Position</span>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <svg class="placeholder" viewBox="0 0 64 64" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="22" r="12" />
+                            <path d="M10 58c0-12 10-20 22-20s22 8 22 20" />
+                        </svg>
+                    </div>
+                    <span class="team-card__name" style="color: var(--muted);">Open Position</span>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <svg class="placeholder" viewBox="0 0 64 64" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="22" r="12" />
+                            <path d="M10 58c0-12 10-20 22-20s22 8 22 20" />
+                        </svg>
+                    </div>
+                    <span class="team-card__name" style="color: var(--muted);">Open Position</span>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <svg class="placeholder" viewBox="0 0 64 64" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="22" r="12" />
+                            <path d="M10 58c0-12 10-20 22-20s22 8 22 20" />
+                        </svg>
+                    </div>
+                    <span class="team-card__name" style="color: var(--muted);">Open Position</span>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <svg class="placeholder" viewBox="0 0 64 64" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="22" r="12" />
+                            <path d="M10 58c0-12 10-20 22-20s22 8 22 20" />
+                        </svg>
+                    </div>
+                    <span class="team-card__name" style="color: var(--muted);">Open Position</span>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <svg class="placeholder" viewBox="0 0 64 64" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="22" r="12" />
+                            <path d="M10 58c0-12 10-20 22-20s22 8 22 20" />
+                        </svg>
+                    </div>
+                    <span class="team-card__name" style="color: var(--muted);">Open Position</span>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- LAB PODCAST HOST -->
+    <section class="section section--alt">
+        <div class="container">
+            <h3 class="section-title">Lab Podcast Host</h3>
+            <div class="team-grid team-grid--single">
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/sayed-shaheer-aber.jpg" alt="Sayed Shaheer Aber"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#sayed-shaheer-aber" class="team-card__name">Sayed Shaheer Aber</a>
+                    <p class="team-card__role">Podcast Host</p>
+                    <p class="team-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMER MEMBERS AND PROJECT TEAM -->
+    <section class="section">
+        <div class="container">
+            <h3 class="former-section-title">Former Members and Project Team</h3>
+            <div class="former-grid">
+
+                <article class="former-card">
+                    <div class="former-card__photo">
+                        <img src="assets/team/hekmatullah-zurmati.jpg" alt="Hekmatullah Zurmati"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <div class="former-card__body">
+                        <h4 class="former-card__name">Hekmatullah Zurmati</h4>
+                        <p class="former-card__role">Project Team</p>
+                        <p class="former-card__affiliation">AI in Medicine Innovation Research Laboratory</p>
+                    </div>
+                </article>
+
+                <div class="contrib-card">
+                    <h3 class="contrib-card__title">Project Contributors</h3>
+                    <ul class="contrib-tags">
+                        <li class="contrib-tag">SayedIman Mostafavi</li>
+                        <li class="contrib-tag">Waleed</li>
+                        <li class="contrib-tag">Payam Fakhr Ebrahimi</li>
+                        <li class="contrib-tag">Sayed Shaheer Aber</li>
+                        <li class="contrib-tag">Salmon</li>
+                        <li class="contrib-tag">Nur</li>
+                        <li class="contrib-tag">Mohammad</li>
+                        <li class="contrib-tag">Hassan</li>
+                        <li class="contrib-tag">Farnaz</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SOFTWARE DEVELOPERS -->
+    <section class="section section--alt">
+        <div class="container">
+            <h3 class="section-title">Software Developers</h3>
+            <ul class="dev-list">
+                <li><a href="#waleed">Waleed</a>, AI in Medicine Innovation Research Laboratory</li>
+                <li><a href="#sayed-shaheer-aber">Sayed Shaheer Aber</a>, AI in Medicine Innovation Research Laboratory
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <img class="brand-mark" src="assets/logo.png"
+                        alt="AI in Medicine Innovations Research logo" />
+                    <div class="brand-text">
+                        <span class="brand-line-1">AI in Medicine Innovations</span>
+                        <span class="brand-line-2">Research</span>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Address</h3>
+                    <address>
+                        &Uuml;sk&uuml;dar University<br>
+                        Faculty of Engineering and Natural Sciences<br>
+                        Department of Software Engineering<br>
+                        Alt&uuml;nizade Mah., Haluk T&uuml;rks&ouml;y Sk. No: 14<br>
+                        34662 &Uuml;sk&uuml;dar / &Idot;stanbul, T&uuml;rkiye
+                    </address>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p>Email: faezeh[dot]rohani[at]uskudar[dot]edu[dot]tr</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <a href="#top" class="back-to-top" aria-label="Back to top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5" />
+            <path d="M5 12l7-7 7 7" />
+        </svg>
+    </a>
+
+</body>
+
+</html>
