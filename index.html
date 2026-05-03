@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faezeh Rohani, PhD | Medical Innovation Research in AI Lab</title>
-    <link rel="icon"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpolygon points='60,8 108,34 108,86 60,112 12,86 12,34' fill='%231659a4'/%3E%3Cpath d='M44 80V40h10v16h12V40h10v40H66V64H54v16H44Z' fill='%23ffffff'/%3E%3Cpath d='M22 60h14l6-12 9 24 8-30 9 22h12' fill='none' stroke='%23f6b800' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="icon" href="assets/logo.png">
     <style>
         :root {
             --primary: #1659a4;
@@ -143,18 +142,6 @@
             letter-spacing: 0.2px;
         }
 
-        .brand-sub {
-            margin-top: 6px;
-            font-style: italic;
-            font-size: 18px;
-            color: var(--primary);
-        }
-
-        .brand-sub .ai-tag {
-            color: var(--accent-gold);
-            font-weight: 700;
-        }
-
         /* === MAIN NAV === */
         .main-nav {
             display: flex;
@@ -227,8 +214,8 @@
             z-index: 50;
         }
 
-        .nav-item:hover > .dropdown,
-        .nav-item:focus-within > .dropdown {
+        .nav-item:hover>.dropdown,
+        .nav-item:focus-within>.dropdown {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
@@ -369,6 +356,10 @@
             line-height: 1.85;
             color: var(--ink-soft);
             margin: 0 0 26px;
+            text-align: justify;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
         }
 
         .bio a {
@@ -507,10 +498,6 @@
                 font-size: 18px;
             }
 
-            .brand-sub {
-                font-size: 15px;
-            }
-
             .main-nav {
                 gap: 14px;
             }
@@ -584,7 +571,7 @@
                     </svg>
                     Team
                 </a>
-                <a href="#ai-events">
+                <a href="events.html">
                     <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
                         <rect x="3.5" y="5" width="17" height="15" rx="1.5" />
                         <path d="M3.5 10h17" />
@@ -664,8 +651,7 @@
         <div class="container">
             <div class="profile-card">
                 <div class="portrait-frame">
-                    <img src="assets/faezeh-rohani.jpg"
-                        alt="Portrait of Faezeh Rohani, PhD"
+                    <img src="assets/faezeh-rohani.jpg" alt="Portrait of Faezeh Rohani, PhD"
                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;color:#fff;font-weight:600;font-size:18px;text-align:center;padding:20px;&quot;>Add a portrait at<br>assets/faezeh-rohani.jpg</div>';" />
                 </div>
                 <h2>Faezeh Rohani, PhD</h2>
