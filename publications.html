@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | Medical Innovation Research in AI Lab</title>
+    <link rel="icon" href="assets/logo.png">
+    <style>
+        :root {
+            --primary: #1659a4;
+            --primary-dark: #0a3470;
+            --primary-soft: #e7f2fb;
+            --primary-tint: #f2f8fd;
+            --link: #1976d2;
+            --link-hover: #0d4e9b;
+            --accent-gold: #f6b800;
+            --ink: #2b2b2b;
+            --ink-soft: #4a4a4a;
+            --muted: #6b7a8a;
+            --line: #d4e3f1;
+            --bg: #ffffff;
+            --shadow: rgba(10, 52, 112, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        a:hover,
+        a:focus {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        img,
+        svg {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1200px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .top-bar {
+            background: linear-gradient(90deg, #1659a4 0%, #1c7ec0 25%, #1aa6c4 50%, #1cc9b0 75%, #2ec97e 100%);
+            color: #ffffff;
+            font-size: 14px;
+            padding: 10px 0;
+            box-shadow: 0 1px 3px rgba(10, 52, 112, 0.18);
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .site-header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--line);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+        }
+
+        .nav-shell {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            min-height: 110px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: var(--primary);
+            min-width: 280px;
+        }
+
+        .brand-mark {
+            width: 88px;
+            height: 88px;
+            flex: 0 0 88px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-line-1 {
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--primary-dark);
+            letter-spacing: 0.2px;
+        }
+
+        .brand-line-2 {
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+            color: var(--primary);
+            letter-spacing: 0.2px;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .main-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-dark);
+            font-weight: 500;
+            font-size: 17px;
+            padding: 10px 2px;
+            border-bottom: 3px solid transparent;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .main-nav a:hover {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        .main-nav a.is-active {
+            color: var(--link);
+            border-bottom-color: var(--link);
+        }
+
+        .main-nav .icon {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .main-nav .has-caret::after {
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 6px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid currentColor;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            min-width: 240px;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            box-shadow: 0 10px 28px rgba(10, 52, 112, 0.12);
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px);
+            transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+            z-index: 50;
+        }
+
+        .nav-item:hover>.dropdown,
+        .nav-item:focus-within>.dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            color: var(--ink);
+            font-size: 16px;
+            font-weight: 500;
+            border-bottom: none;
+        }
+
+        .dropdown a:hover {
+            background: var(--primary-soft);
+            color: var(--link-hover);
+            text-decoration: none;
+        }
+
+        .page-title {
+            background: var(--primary-soft);
+            padding: 56px 0 64px;
+        }
+
+        .page-title .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .page-title h1 {
+            margin: 0;
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.5px;
+        }
+
+        .breadcrumb {
+            color: var(--ink-soft);
+            font-size: 15px;
+        }
+
+        .breadcrumb a {
+            color: var(--link);
+        }
+
+        .breadcrumb .sep {
+            color: var(--muted);
+            margin: 0 8px;
+        }
+
+        /* === PUBLICATIONS HERO === */
+        .pub-hero {
+            padding: 70px 0 30px;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .pub-hero h2 {
+            margin: 0;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+
+        /* === PUBLICATIONS LIST === */
+        .pub-section {
+            padding: 60px 0;
+            background: #ffffff;
+        }
+
+        .pub-section--alt {
+            background: var(--primary-soft);
+        }
+
+        .pub-section:last-of-type {
+            padding-bottom: 100px;
+        }
+
+        .pub-year-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .pub-year {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--ink);
+            margin: 0;
+            padding-top: 18px;
+            position: sticky;
+            top: 130px;
+        }
+
+        .pub-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* === PUBLICATION CARD (original two-column layout) === */
+        .pub-card {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            box-shadow: 0 6px 18px var(--shadow);
+            overflow: hidden;
+            cursor: pointer;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 28px;
+            padding: 22px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+            transform-origin: top center;
+            max-width: 720px;
+        }
+
+        .pub-card:hover {
+            box-shadow: 0 12px 32px rgba(10, 52, 112, 0.18);
+            transform: translateY(-4px);
+        }
+
+        .pub-card.is-expanded {
+            grid-template-columns: 320px 1fr;
+            transform: scale(1.04) translateY(-4px);
+            box-shadow: 0 22px 50px rgba(10, 52, 112, 0.28);
+            max-width: 920px;
+            padding: 30px;
+        }
+
+        .pub-card__thumb {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            transition: transform 0.4s ease;
+            background: var(--primary-soft);
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .pub-card__body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pub-card__title {
+            margin: 0 0 12px;
+            font-size: 18px;
+            line-height: 1.35;
+            font-weight: 700;
+            color: var(--ink);
+            transition: font-size 0.4s ease;
+        }
+
+        .pub-card.is-expanded .pub-card__title {
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+
+        .pub-card__title a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        .pub-card__title a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        .pub-card__authors {
+            margin: 0 0 10px;
+            color: var(--ink);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .pub-card.is-expanded .pub-card__authors {
+            font-size: 15px;
+        }
+
+        .pub-card__authors .pi {
+            color: var(--link);
+        }
+
+        .pub-card__meta {
+            margin: 0 0 8px;
+            color: var(--ink-soft);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .pub-card.is-expanded .pub-card__meta {
+            font-size: 14px;
+        }
+
+        .pub-card__abstract {
+            display: none;
+            margin: 12px 0 0;
+            color: var(--ink-soft);
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .pub-card.is-expanded .pub-card__abstract {
+            display: block;
+        }
+
+        .pub-card__doi {
+            margin: 14px 0 0;
+            font-size: 13px;
+        }
+
+        .pub-card__doi a {
+            color: var(--link);
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 12px;
+            word-break: break-all;
+        }
+
+        .pub-card__expand-hint {
+            margin: 14px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+            font-style: italic;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pub-card.is-expanded .pub-card__expand-hint {
+            color: var(--link);
+        }
+
+        .pub-card.is-expanded .pub-card__expand-hint::before {
+            content: "\2715";
+            font-style: normal;
+        }
+
+        .pub-card:not(.is-expanded) .pub-card__expand-hint::before {
+            content: "\002B";
+            font-style: normal;
+        }
+
+        .pub-card__thumb-fallback {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            background: linear-gradient(135deg, var(--primary-soft), #ffffff);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 18px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .pub-year-row {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .pub-year {
+                position: static;
+                padding-top: 0;
+                font-size: 36px;
+            }
+
+            .pub-card {
+                grid-template-columns: 160px 1fr;
+                gap: 18px;
+                padding: 18px;
+            }
+
+            .pub-card.is-expanded {
+                grid-template-columns: 1fr;
+                transform: scale(1.02);
+                max-width: 100%;
+            }
+
+            .pub-card.is-expanded .pub-card__thumb {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .pub-card {
+                grid-template-columns: 1fr;
+            }
+
+            .pub-card__thumb {
+                max-width: 240px;
+                margin: 0 auto;
+            }
+        }
+
+        /* === FOOTER === */
+        .site-footer {
+            background: #ffffff;
+            border-top: 1px solid var(--line);
+            padding: 60px 0 70px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1.4fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .footer-brand .brand-mark {
+            width: 100px;
+            height: 100px;
+            flex: 0 0 100px;
+        }
+
+        .footer-brand .brand-line-1 {
+            font-size: 24px;
+        }
+
+        .footer-brand .brand-line-2 {
+            font-size: 22px;
+        }
+
+        .footer-col h3 {
+            margin: 0 0 14px;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .footer-col p,
+        .footer-col address {
+            font-style: normal;
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 16px;
+            line-height: 1.85;
+        }
+
+        .footer-col a {
+            color: var(--link);
+        }
+
+        .back-to-top {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 6px;
+            background: var(--link);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(25, 118, 210, 0.35);
+            text-decoration: none;
+            z-index: 40;
+        }
+
+        @media (max-width: 980px) {
+            .nav-shell {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 18px 0;
+                gap: 18px;
+                min-height: 0;
+            }
+
+            .main-nav {
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+
+            .dropdown {
+                right: auto;
+                left: 0;
+                min-width: 220px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .page-title h1 {
+                font-size: 34px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-bar .container {
+                justify-content: center;
+            }
+
+            .brand-mark {
+                width: 72px;
+                height: 72px;
+                flex: 0 0 72px;
+            }
+
+            .brand-line-1 {
+                font-size: 22px;
+            }
+
+            .brand-line-2 {
+                font-size: 18px;
+            }
+
+            .main-nav {
+                gap: 14px;
+            }
+
+            .main-nav a {
+                font-size: 15px;
+            }
+
+            .page-title {
+                padding: 40px 0 44px;
+            }
+
+            .page-title h1 {
+                font-size: 28px;
+            }
+
+            .pub-hero h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP AFFILIATION BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <a href="https://uskudar.edu.tr/en" target="_blank" rel="noopener">&Uuml;sk&uuml;dar University</a>
+        </div>
+    </div>
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+        <div class="container nav-shell">
+
+            <a class="brand" href="index.html" aria-label="Medical Innovation Research in AI Lab home">
+                <img class="brand-mark" src="assets/logo.png" alt="Medical Innovation Research in AI Lab logo" />
+                <div class="brand-text">
+                    <span class="brand-line-1">Medical Innovation Research</span>
+                    <span class="brand-line-2">in AI Lab</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" aria-label="Primary">
+                <a href="index.html">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 11l9-8 9 8" />
+                        <path d="M5 10v10h14V10" />
+                    </svg>
+                    Home
+                </a>
+                <a href="team.html">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="9" cy="8" r="3.2" />
+                        <circle cx="17" cy="9" r="2.6" />
+                        <path d="M3 19c.8-3 3.4-4.6 6-4.6s5.2 1.6 6 4.6" />
+                        <path d="M14.5 19c.6-2.2 2.6-3.4 4.5-3.4 1.2 0 2.2.4 2.9 1" />
+                    </svg>
+                    Team
+                </a>
+                <a href="events.html">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3.5" y="5" width="17" height="15" rx="1.5" />
+                        <path d="M3.5 10h17" />
+                        <path d="M8 3v4M16 3v4" />
+                    </svg>
+                    AI Events
+                </a>
+                <div class="nav-item">
+                    <a href="#research" class="has-caret" aria-haspopup="true" aria-expanded="false">
+                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="6" />
+                            <path d="M20 20l-4.4-4.4" />
+                        </svg>
+                        Research
+                    </a>
+                    <div class="dropdown" role="menu">
+                        <a href="#projects" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 4h11l3 3v13H5z" />
+                                <path d="M9 9h6M9 13h6M9 17h4" />
+                            </svg>
+                            Projects
+                        </a>
+                        <a href="publications.html" role="menuitem" class="is-active">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4 5a2 2 0 012-2h12v18H6a2 2 0 01-2-2V5z" />
+                                <path d="M8 7h8M8 11h8M8 15h6" />
+                            </svg>
+                            Publications
+                        </a>
+                        <a href="#openings" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 21V5a2 2 0 012-2h7l5 5v13" />
+                                <path d="M14 3v6h5" />
+                                <path d="M9 14h6M9 17h4" />
+                            </svg>
+                            Openings
+                        </a>
+                        <a href="https://github.com/" target="_blank" rel="noopener" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.12-1.47-1.12-1.47-.92-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.9 1.54 2.36 1.1 2.94.84.09-.65.35-1.1.64-1.35-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0112 6.8c.85.004 1.7.115 2.5.34 1.9-1.3 2.74-1.03 2.74-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z" />
+                            </svg>
+                            GitHub Repositories
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE TITLE STRIP -->
+    <section class="page-title" id="top">
+        <div class="container">
+            <h1>Publications</h1>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a><span class="sep">/</span>
+                <span>Publications</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- HERO -->
+    <section class="pub-hero">
+        <div class="container">
+            <h2>Publications</h2>
+        </div>
+    </section>
+
+    <!-- PUBLICATIONS LIST -->
+
+    <section class="pub-section pub-section--alt">
+        <div class="container">
+
+            <div class="pub-year-row">
+                <h2 class="pub-year">2025</h2>
+
+                <article class="pub-card" tabindex="0" role="button" aria-expanded="false"
+                    aria-label="Expand publication details">
+                    <img class="pub-card__thumb" src="assets/publications/hsmtl-net.png"
+                        alt="HSMTL-Net paper preview"
+                        onerror="this.outerHTML='<div class=&quot;pub-card__thumb-fallback&quot;>Save the paper preview at<br><strong>assets/publications/hsmtl-net.png</strong></div>';" />
+                    <div class="pub-card__body">
+                        <h3 class="pub-card__title">
+                            <a href="https://assets-eu.researchsquare.com/files/rs-5919455/v1/35c2856d-e0bc-418e-865b-da5e7d1bf771.pdf?c=1742135494"
+                                target="_blank" rel="noopener"
+                                onclick="event.stopPropagation()">HSMTL-Net: A Multi-Task Learning Framework for Human
+                                Segmentation with Integrated Regression and Classification Modules</a>
+                        </h3>
+                        <p class="pub-card__authors"><span class="pi">Faezeh Rohani</span>, Soroush Babaee Khobdeh</p>
+                        <p class="pub-card__meta">
+                            Research Square &middot; Posted February 3, 2025<br>
+                            Sanabad Golbahar Institute of Higher Education
+                        </p>
+                        <p class="pub-card__abstract">
+                            <strong>Keywords:</strong> Human Segmentation, Multi-task Learning, Gender Classification,
+                            Age Estimation, Supervise.ly Segmentation Person Dataset.<br><br>
+                            This work introduces HSMTL-Net, a multi-task deep learning framework that jointly performs
+                            human segmentation, age regression, and gender classification within a single integrated
+                            model. The framework leverages shared representations across tasks to improve accuracy and
+                            efficiency, and is evaluated on the Supervise.ly person segmentation dataset.
+                        </p>
+                        <p class="pub-card__doi">
+                            DOI: <a href="https://doi.org/10.21203/rs.3.rs-5919455/v1" target="_blank"
+                                rel="noopener"
+                                onclick="event.stopPropagation()">https://doi.org/10.21203/rs.3.rs-5919455/v1</a>
+                        </p>
+                        <span class="pub-card__expand-hint"></span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="pub-section">
+        <div class="container">
+
+            <div class="pub-year-row">
+                <h2 class="pub-year">2024</h2>
+
+                <article class="pub-card" tabindex="0" role="button" aria-expanded="false"
+                    aria-label="Expand publication details">
+                    <img class="pub-card__thumb" src="assets/publications/gait-balance-adhd.png"
+                        alt="Gait and balance ADHD paper preview"
+                        onerror="this.outerHTML='<div class=&quot;pub-card__thumb-fallback&quot;>Save the paper preview at<br><strong>assets/publications/gait-balance-adhd.png</strong></div>';" />
+                    <div class="pub-card__body">
+                        <h3 class="pub-card__title">
+                            <a href="https://link.springer.com/article/10.1007/s11227-023-05731-0" target="_blank"
+                                rel="noopener" onclick="event.stopPropagation()">Extracting Gait and Balance Pattern
+                                Features from Skeleton Data to Diagnose Attention Deficit/Hyperactivity Disorder in
+                                Children</a>
+                        </h3>
+                        <p class="pub-card__authors"><span class="pi">Faezeh Rohani</span></p>
+                        <p class="pub-card__meta">
+                            The Journal of Supercomputing &middot; Springer Nature &middot; Published 2024
+                        </p>
+                        <p class="pub-card__abstract">
+                            <strong>Topic:</strong> ADHD Diagnosis, Gait Analysis, Balance Assessment, Skeleton Data,
+                            Motor Behavior, Pediatric Mental Health.<br><br>
+                            This paper presents a method for extracting gait and balance pattern features from
+                            skeleton data to support the diagnosis of Attention Deficit/Hyperactivity Disorder (ADHD)
+                            in children, contributing to AI-driven diagnostic tools for pediatric mental health.
+                        </p>
+                        <p class="pub-card__doi">
+                            DOI: <a href="https://doi.org/10.1007/s11227-023-05731-0" target="_blank"
+                                rel="noopener"
+                                onclick="event.stopPropagation()">https://doi.org/10.1007/s11227-023-05731-0</a>
+                        </p>
+                        <span class="pub-card__expand-hint"></span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="pub-section pub-section--alt">
+        <div class="container">
+
+            <div class="pub-year-row">
+                <h2 class="pub-year">2015</h2>
+
+                <div class="pub-stack">
+
+                    <article class="pub-card" tabindex="0" role="button" aria-expanded="false"
+                        aria-label="Expand publication details">
+                        <img class="pub-card__thumb" src="assets/publications/bpm-flexibility.png"
+                            alt="From Business Process Management to Flexibility paper preview"
+                            onerror="this.outerHTML='<div class=&quot;pub-card__thumb-fallback&quot;>Save the paper preview at<br><strong>assets/publications/bpm-flexibility.png</strong></div>';" />
+                        <div class="pub-card__body">
+                            <h3 class="pub-card__title">
+                                <a href="https://d1wqtxts1xzle7.cloudfront.net/37758005/10.11648.j.cbb.20150303.11-libre.pdf?1432797937=&amp;response-content-disposition=inline%3B+filename%3DFrom_Business_Process_Management_to_Flex.pdf&amp;Expires=1778021933&amp;Signature=bH9bbxOFdhzfm~n7u0VBfgxGogwH7N48NV5Ml6HO0JLIXdG6uCHsjs1v8JNZbkn1j3Mr~v9rYRDKJxhvbSjzBFYpuXBWT5lWq-~dYYk0ADprGJVLPyUF08F6k3rO5APQsH~w~-ficKqVLOS4gitR6xiKTlaINREV40QKo9UApkjnhbcu0oc7nuX2pH7Q0deKzmzGlHBYRBJZUAh2uUeOMc0PkmmCw3NLsBXE9OXsW9EnjR3~d4cVeFj4VEq0BRs9qbV0dFh~46ApNRsASiwihHMPjSalfJTHFZDf~wLB15GjrJb9LHrD-91VVur-1AqEYzZoCZt4OQsVhamCIAhRDg__&amp;Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA"
+                                    target="_blank" rel="noopener"
+                                    onclick="event.stopPropagation()">From Business Process Management to Flexibility</a>
+                            </h3>
+                            <p class="pub-card__authors"><span class="pi">Faezeh Rohani</span></p>
+                            <p class="pub-card__meta">
+                                Computational Biology and Bioinformatics &middot; Published 2015<br>
+                                Volume 3, Issue 3, Article 1
+                            </p>
+                            <p class="pub-card__abstract">
+                                <strong>Topic:</strong> Business Process Management, Workflow Flexibility, Adaptive
+                                Process Modeling.<br><br>
+                                This paper explores the evolution from traditional Business Process Management (BPM)
+                                toward flexible, adaptive process management approaches that can respond to changing
+                                organizational needs and dynamic environments.
+                            </p>
+                            <p class="pub-card__doi">
+                                DOI: <a href="https://doi.org/10.11648/j.cbb.20150303.11" target="_blank"
+                                    rel="noopener"
+                                    onclick="event.stopPropagation()">https://doi.org/10.11648/j.cbb.20150303.11</a>
+                            </p>
+                            <span class="pub-card__expand-hint"></span>
+                        </div>
+                    </article>
+
+                    <article class="pub-card" tabindex="0" role="button" aria-expanded="false"
+                        aria-label="Expand publication details">
+                        <img class="pub-card__thumb" src="assets/publications/active-algorithm-grayscale.png"
+                            alt="An Active Algorithm to Gray-scale Digital Image paper preview"
+                            onerror="this.outerHTML='<div class=&quot;pub-card__thumb-fallback&quot;>Save the paper preview at<br><strong>assets/publications/active-algorithm-grayscale.png</strong></div>';" />
+                        <div class="pub-card__body">
+                            <h3 class="pub-card__title">
+                                <a href="https://d1wqtxts1xzle7.cloudfront.net/39854510/JCSSD-1-001-libre.pdf?1447140931=&amp;response-content-disposition=inline%3B+filename%3DAn_Active_Algorithm_to_Gray_scale_Digita.pdf&amp;Expires=1778022301&amp;Signature=bCVlcE276Dmc7BDiMBEB7DN2FMX1Rn68l8sJ~tJKWs~x80bXjphPLhduAOIXqdUb~A99JWuIqEy1L13JukolHLsa8a5ixbOT4EFkFWNhJ8H0QopUEfGBd86-p~necdq9bappPn6PzogH~XMV3Qa2-RYnahaNWD7U6xAVzWXeIBG~QlXwZHkxks5a6lOI3HOSRw1pXUl7YdGvNvWqSW~g7Af02u8ZcpZh0qLHLY2G0ikN-rMWfB3yo4uGcnz4ufSoSpeOsAAI5wm4h-K8XBtOcBNzXqMx0vIZIPmBVO~hnxf26YN44v-6NDNh2rDI-gllT3ZTza~4Gh3AA3MKVariTg__&amp;Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA"
+                                    target="_blank" rel="noopener"
+                                    onclick="event.stopPropagation()">An Active Algorithm to Gray-scale Digital
+                                    Image</a>
+                            </h3>
+                            <p class="pub-card__authors"><span class="pi">Faezeh Rohani</span></p>
+                            <p class="pub-card__meta">
+                                Journal of Computer Science and Software Development &middot; Published 2015<br>
+                                Volume 1, Issue 1, Article 1
+                            </p>
+                            <p class="pub-card__abstract">
+                                <strong>Topic:</strong> Image Processing, Gray-scale Conversion, Digital Image
+                                Algorithms.<br><br>
+                                This paper presents an active algorithm for converting digital images to gray-scale,
+                                with applications in computer vision and image preprocessing.
+                            </p>
+                            <p class="pub-card__doi">
+                                Reference: <a href="https://d1wqtxts1xzle7.cloudfront.net/39854510/JCSSD-1-001-libre.pdf"
+                                    target="_blank" rel="noopener"
+                                    onclick="event.stopPropagation()">JCSSD-1-001</a>
+                            </p>
+                            <span class="pub-card__expand-hint"></span>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="pub-section">
+        <div class="container">
+
+            <div class="pub-year-row">
+                <h2 class="pub-year">2014</h2>
+
+                <article class="pub-card" tabindex="0" role="button" aria-expanded="false"
+                    aria-label="Expand publication details">
+                    <img class="pub-card__thumb" src="assets/publications/human-cell-detection.png"
+                        alt="Human cell detection in microscopic image paper preview"
+                        onerror="this.outerHTML='<div class=&quot;pub-card__thumb-fallback&quot;>Save the paper preview at<br><strong>assets/publications/human-cell-detection.png</strong></div>';" />
+                    <div class="pub-card__body">
+                        <h3 class="pub-card__title">
+                            <a href="https://d1wqtxts1xzle7.cloudfront.net/36043950/10.11648.j.cbb.20140204.11-libre.pdf?1419471393=&amp;response-content-disposition=inline%3B+filename%3DHuman_cell_detection_in_microscopic_imag.pdf&amp;Expires=1778022711&amp;Signature=grklf1F5mH~c1gwnK7Zgy9O4~B~Ri6BQNP8775FpKsoyeabdwkathVBj8rBD4bFKkHvn6ERVCQ-ms14CmRNyR435DHvFBnfC9nGguRAwWtMcJ52dlikUmghkN0MLrfY5UOQ9j0uId9STH5M-4hCTgiTTIwmzYymKm2xec93TAdkLorlA0op4dtcjRJSFalUP1ywkh5ylzitoN3D3p053biOeBajsfdNUjZOZZEqp3T6XeARfHP08s38MyVLAj1AaDvVTpHx5sLWZqETjHZ3T-6eSl5ecfT7EDIY-hiK6SZxneANpz3-oJV1xCpmng68h~dy09lDjQg3c-h7lv0hhIA__&amp;Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA"
+                                target="_blank" rel="noopener"
+                                onclick="event.stopPropagation()">Human Cell Detection in Microscopic Images</a>
+                        </h3>
+                        <p class="pub-card__authors"><span class="pi">Faezeh Rohani</span></p>
+                        <p class="pub-card__meta">
+                            Computational Biology and Bioinformatics &middot; Published 2014<br>
+                            Volume 2, Issue 4, Article 1
+                        </p>
+                        <p class="pub-card__abstract">
+                            <strong>Topic:</strong> Biomedical Image Processing, Cell Detection, Microscopic Image
+                            Analysis.<br><br>
+                            This paper presents methods for detecting human cells in microscopic images, supporting
+                            biomedical research workflows in cellular analysis and pathology.
+                        </p>
+                        <p class="pub-card__doi">
+                            DOI: <a href="https://doi.org/10.11648/j.cbb.20140204.11" target="_blank"
+                                rel="noopener"
+                                onclick="event.stopPropagation()">https://doi.org/10.11648/j.cbb.20140204.11</a>
+                        </p>
+                        <span class="pub-card__expand-hint"></span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <img class="brand-mark" src="assets/logo.png"
+                        alt="Medical Innovation Research in AI Lab logo" />
+                    <div class="brand-text">
+                        <span class="brand-line-1">Medical Innovation Research</span>
+                        <span class="brand-line-2">in AI Lab</span>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Address</h3>
+                    <address>
+                        &Uuml;sk&uuml;dar University<br>
+                        Faculty of Engineering and Natural Sciences<br>
+                        Department of Software Engineering<br>
+                        Alt&uuml;nizade Mah., Haluk T&uuml;rks&ouml;y Sk. No: 14<br>
+                        34662 &Uuml;sk&uuml;dar / &Idot;stanbul, T&uuml;rkiye
+                    </address>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p>Email: faezeh[dot]rohani[at]uskudar[dot]edu[dot]tr</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <a href="#top" class="back-to-top" aria-label="Back to top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5" />
+            <path d="M5 12l7-7 7 7" />
+        </svg>
+    </a>
+
+    <script>
+        (function () {
+            var cards = document.querySelectorAll('.pub-card');
+            cards.forEach(function (card) {
+                card.addEventListener('click', function () {
+                    var open = card.classList.toggle('is-expanded');
+                    card.setAttribute('aria-expanded', open ? 'true' : 'false');
+                });
+                card.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        var open = card.classList.toggle('is-expanded');
+                        card.setAttribute('aria-expanded', open ? 'true' : 'false');
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+
+</html>
