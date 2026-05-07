@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | MIRAI Research Laboratory</title>
+    <meta name="description"
+        content="MIRAI Research Laboratory — Medical Innovation Research in AI. Led by Dr. Faezeh Rohani at Üsküdar University. Advancing intelligent systems for mental health, neurological diagnostics, and clinical AI." />
+    <link rel="icon" href="assets/logo.png">
+    <style>
+        :root {
+            --primary: #1659a4;
+            --primary-dark: #0a3470;
+            --primary-soft: #e7f2fb;
+            --primary-tint: #f2f8fd;
+            --link: #1976d2;
+            --link-hover: #0d4e9b;
+            --accent-gold: #f6b800;
+            --ink: #2b2b2b;
+            --ink-soft: #4a4a4a;
+            --muted: #6b7a8a;
+            --line: #d4e3f1;
+            --bg: #ffffff;
+            --shadow: rgba(10, 52, 112, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        a:hover,
+        a:focus {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        img,
+        svg {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1200px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .top-bar {
+            background: linear-gradient(90deg, #1659a4 0%, #1c7ec0 25%, #1aa6c4 50%, #1cc9b0 75%, #2ec97e 100%);
+            color: #ffffff;
+            font-size: 14px;
+            padding: 10px 0;
+            box-shadow: 0 1px 3px rgba(10, 52, 112, 0.18);
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .site-header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--line);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+        }
+
+        .nav-shell {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            min-height: 110px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: var(--primary);
+            min-width: 280px;
+        }
+
+        .brand-mark {
+            width: 88px;
+            height: 88px;
+            flex: 0 0 88px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-line-1 {
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--primary-dark);
+            letter-spacing: 0.2px;
+        }
+
+        .brand-line-2 {
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+            color: var(--primary);
+            letter-spacing: 0.2px;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .main-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-dark);
+            font-weight: 500;
+            font-size: 17px;
+            padding: 10px 2px;
+            border-bottom: 3px solid transparent;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .main-nav a:hover {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        .main-nav a.is-active {
+            color: var(--link);
+            border-bottom-color: var(--link);
+        }
+
+        .main-nav .icon {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .main-nav .has-caret::after {
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 6px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid currentColor;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            min-width: 240px;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            box-shadow: 0 10px 28px rgba(10, 52, 112, 0.12);
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px);
+            transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+            z-index: 50;
+        }
+
+        .nav-item:hover>.dropdown,
+        .nav-item:focus-within>.dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            color: var(--ink);
+            font-size: 16px;
+            font-weight: 500;
+            border-bottom: none;
+        }
+
+        .dropdown a:hover {
+            background: var(--primary-soft);
+            color: var(--link-hover);
+            text-decoration: none;
+        }
+
+        /* === ABOUT HERO (with optional custom background image) === */
+        .about-hero {
+            position: relative;
+            min-height: 460px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            overflow: hidden;
+            background:
+                linear-gradient(135deg, rgba(22, 89, 164, 0.85) 0%, rgba(26, 166, 196, 0.78) 50%, rgba(46, 201, 126, 0.85) 100%),
+                url("assets/about-bg.jpg") center / cover no-repeat;
+            background-color: var(--primary-dark);
+        }
+
+        .about-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 40%);
+        }
+
+        .about-hero .container {
+            position: relative;
+            z-index: 1;
+            padding: 80px 0;
+        }
+
+        .about-hero__eyebrow {
+            display: inline-block;
+            margin: 0 0 16px;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .about-hero h1 {
+            margin: 0 0 16px;
+            font-size: 60px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            text-shadow: 0 4px 24px rgba(10, 30, 60, 0.35);
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+        }
+
+        .about-hero h1 .accent {
+            background: linear-gradient(90deg, #ffffff 0%, #f6e69a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-hero p {
+            margin: 0 auto;
+            max-width: 720px;
+            font-size: 19px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.94);
+        }
+
+        /* === ABOUT CONTENT === */
+        .about-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .about-section--alt {
+            background: var(--primary-soft);
+        }
+
+        .about-block {
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .about-block h2 {
+            margin: 0 0 22px;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.4px;
+        }
+
+        .about-block p {
+            margin: 0 0 22px;
+            font-size: 17px;
+            line-height: 1.85;
+            color: var(--ink-soft);
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .about-block a {
+            color: var(--link);
+        }
+
+        /* === RESEARCH INTERESTS === */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .interest-card {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 32px 28px;
+            box-shadow: 0 4px 16px var(--shadow);
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(10, 52, 112, 0.14);
+        }
+
+        .interest-card__icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1976d2 0%, #1aa6c4 60%, #2ec97e 100%);
+            color: #ffffff;
+        }
+
+        .interest-card__icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .interest-card h4 {
+            margin: 0 0 14px;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .interest-card p {
+            margin: 0 0 6px;
+            font-size: 15px;
+            color: var(--ink-soft);
+            line-height: 1.55;
+        }
+
+        .interest-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 900px) {
+            .interests-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .about-hero h1 {
+                font-size: 44px;
+            }
+
+            .about-hero p {
+                font-size: 17px;
+            }
+
+            .about-section {
+                padding: 60px 0;
+            }
+        }
+
+        /* === FOOTER === */
+        .site-footer {
+            background: #ffffff;
+            border-top: 1px solid var(--line);
+            padding: 60px 0 70px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1.4fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .footer-brand .brand-mark {
+            width: 100px;
+            height: 100px;
+            flex: 0 0 100px;
+        }
+
+        .footer-brand .brand-line-1 {
+            font-size: 24px;
+        }
+
+        .footer-brand .brand-line-2 {
+            font-size: 22px;
+        }
+
+        .footer-col h3 {
+            margin: 0 0 14px;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .footer-col p,
+        .footer-col address {
+            font-style: normal;
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 16px;
+            line-height: 1.85;
+        }
+
+        .footer-col a {
+            color: var(--link);
+        }
+
+        .back-to-top {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 6px;
+            background: var(--link);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(25, 118, 210, 0.35);
+            text-decoration: none;
+            z-index: 40;
+        }
+
+        @media (max-width: 980px) {
+            .nav-shell {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 18px 0;
+                gap: 18px;
+                min-height: 0;
+            }
+
+            .main-nav {
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+
+            .dropdown {
+                right: auto;
+                left: 0;
+                min-width: 220px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-bar .container {
+                justify-content: center;
+            }
+
+            .brand-mark {
+                width: 72px;
+                height: 72px;
+                flex: 0 0 72px;
+            }
+
+            .brand-line-1 {
+                font-size: 22px;
+            }
+
+            .brand-line-2 {
+                font-size: 18px;
+            }
+
+            .main-nav {
+                gap: 14px;
+            }
+
+            .main-nav a {
+                font-size: 15px;
+            }
+
+            .about-hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP AFFILIATION BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <a href="https://uskudar.edu.tr/en" target="_blank" rel="noopener">&Uuml;sk&uuml;dar University</a>
+        </div>
+    </div>
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+        <div class="container nav-shell">
+
+            <a class="brand" href="index.html" aria-label="Medical Innovation Research in AI Lab home">
+                <img class="brand-mark" src="assets/logo.png" alt="MIRAI Research Laboratory logo" />
+                <div class="brand-text">
+                    <span class="brand-line-1">Medical Innovation Research</span>
+                    <span class="brand-line-2">in AI Lab</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" aria-label="Primary">
+                <a href="about.html" class="is-active">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-5" />
+                        <path d="M12 8h.01" />
+                    </svg>
+                    About
+                </a>
+                <a href="index.html">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 11l9-8 9 8" />
+                        <path d="M5 10v10h14V10" />
+                    </svg>
+                    Home
+                </a>
+                <a href="team.html">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="9" cy="8" r="3.2" />
+                        <circle cx="17" cy="9" r="2.6" />
+                        <path d="M3 19c.8-3 3.4-4.6 6-4.6s5.2 1.6 6 4.6" />
+                        <path d="M14.5 19c.6-2.2 2.6-3.4 4.5-3.4 1.2 0 2.2.4 2.9 1" />
+                    </svg>
+                    Team
+                </a>
+                <a href="events.html">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3.5" y="5" width="17" height="15" rx="1.5" />
+                        <path d="M3.5 10h17" />
+                        <path d="M8 3v4M16 3v4" />
+                    </svg>
+                    AI Events
+                </a>
+                <div class="nav-item">
+                    <a href="#research" class="has-caret" aria-haspopup="true" aria-expanded="false">
+                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="6" />
+                            <path d="M20 20l-4.4-4.4" />
+                        </svg>
+                        Research
+                    </a>
+                    <div class="dropdown" role="menu">
+                        <a href="#projects" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 4h11l3 3v13H5z" />
+                                <path d="M9 9h6M9 13h6M9 17h4" />
+                            </svg>
+                            Projects
+                        </a>
+                        <a href="publications.html" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4 5a2 2 0 012-2h12v18H6a2 2 0 01-2-2V5z" />
+                                <path d="M8 7h8M8 11h8M8 15h6" />
+                            </svg>
+                            Publications
+                        </a>
+                        <a href="#openings" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 21V5a2 2 0 012-2h7l5 5v13" />
+                                <path d="M14 3v6h5" />
+                                <path d="M9 14h6M9 17h4" />
+                            </svg>
+                            Openings
+                        </a>
+                        <a href="https://github.com/" target="_blank" rel="noopener" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.12-1.47-1.12-1.47-.92-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.9 1.54 2.36 1.1 2.94.84.09-.65.35-1.1.64-1.35-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0112 6.8c.85.004 1.7.115 2.5.34 1.9-1.3 2.74-1.03 2.74-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z" />
+                            </svg>
+                            GitHub Repositories
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO with custom background -->
+    <section class="about-hero" id="top">
+        <div class="container">
+            <span class="about-hero__eyebrow">Medical Innovation Research in AI Lab</span>
+            <h1>Welcome to <span class="accent">MIRAI</span> Research Laboratory</h1>
+            <p>Building intelligent, explainable, and trustworthy AI systems for mental health, neurological
+                diagnostics, and the future of clinical practice.</p>
+        </div>
+    </section>
+
+    <!-- ABOUT MIRAI -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-block">
+                <h2>About MIRAI</h2>
+                <p>The <strong>Medical Innovation Research in AI (MIRAI) Laboratory</strong> is a research group
+                    based in the Department of Software Engineering, Faculty of Engineering and Natural Sciences,
+                    at <a href="https://uskudar.edu.tr/en" target="_blank" rel="noopener">&Uuml;sk&uuml;dar
+                        University</a>, &Idot;stanbul, T&uuml;rkiye. Founded and directed by
+                    <a href="index.html">Dr. Faezeh Rohani, PhD</a>, MIRAI was established with one clear ambition:
+                    to make medicine smarter, safer, and more humane through intelligent, explainable, and
+                    trustworthy artificial intelligence.</p>
+                <p>Our research lives at the intersection of <strong>artificial intelligence, neuroscience,
+                        and clinical practice</strong>. We design, validate, and deploy machine-learning and
+                    deep-learning systems that solve real diagnostic and therapeutic problems &mdash; from EEG/ERP
+                    analysis for mental health, to motor-behavior assessment for ADHD in children, neurofeedback-based
+                    interventions, multi-task human segmentation, and explainable AI for knee osteoarthritis using
+                    3D MRI. Behind every model we build is a patient, a clinician, and a question of
+                    trust &mdash; and we hold our work to that standard.</p>
+                <p>Dr. Rohani brings more than fourteen years of experience across academia, research institutions,
+                    and the digital health industry. Her doctoral dissertation, <em>The Intelligent System for ADHD
+                        Diagnosis in Children Through Motor Performance and EEG Signals</em>, received the highest
+                    distinction in her department and continues to shape the lab's emphasis on pediatric mental
+                    health and neuroscience-driven AI. Before founding MIRAI, she served as Founder and CEO of
+                    <em>Hamrah</em>, a knowledge-based digital health startup focused on AI-driven neurotherapy and
+                    cognitive-motor interventions, and has authored more than forty-five peer-reviewed publications
+                    and the academic books <em>Data Science</em> (2025) and <em>Prompt Engineering</em> (2025).</p>
+                <p>MIRAI is a multidisciplinary team of faculty, research assistants, graduate and undergraduate
+                    students, and software engineers, supported by an international Academic Advisory Board and
+                    active collaborations with the <a href="https://pitthexai.github.io/" target="_blank"
+                        rel="noopener">HExAI Research Laboratory</a> at the University of Pittsburgh and the Brain
+                    and Trauma Foundation in Switzerland, among others. We work openly, publish openly, and release
+                    code, datasets, and tools whenever we can &mdash; because trustworthy AI in medicine should be
+                    reproducible AI.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH PILLARS -->
+    <section class="about-section about-section--alt">
+        <div class="container">
+            <div class="about-block" style="text-align: center;">
+                <h2 style="margin-bottom: 16px;">Research Pillars</h2>
+                <p style="text-align: center; max-width: 720px; margin: 0 auto 50px;">Our work organizes around three
+                    interconnected pillars &mdash; the technical foundation, the clinical applications it serves,
+                    and the educational mission that carries it forward.</p>
+            </div>
+            <div class="interests-grid">
+
+                <article class="interest-card">
+                    <div class="interest-card__icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M12 5V3M12 21v-2M5 12H3M21 12h-2M6.5 6.5L5 5M19 19l-1.5-1.5M6.5 17.5L5 19M19 5l-1.5 1.5" />
+                        </svg>
+                    </div>
+                    <h4>Technical</h4>
+                    <p>Trustworthy &amp; Explainable AI</p>
+                    <p>Multi-task Deep Learning</p>
+                    <p>EEG/ERP Signal Processing</p>
+                    <p>Medical Image &amp; 3D MRI Analysis</p>
+                    <p>Computer Vision &amp; Human Segmentation</p>
+                </article>
+
+                <article class="interest-card">
+                    <div class="interest-card__icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12 21s-7-4.5-7-10a4 4 0 014-4c1.5 0 2.5.6 3 1.5C12.5 7.6 13.5 7 15 7a4 4 0 014 4c0 5.5-7 10-7 10z" />
+                        </svg>
+                    </div>
+                    <h4>Clinical</h4>
+                    <p>Pediatric Mental Health &amp; ADHD</p>
+                    <p>Neurofeedback &amp; Motor Behavior</p>
+                    <p>Cognitive-Motor Interventions</p>
+                    <p>Knee Osteoarthritis &amp; MSK Imaging</p>
+                    <p>Clinical Validation of AI Models</p>
+                </article>
+
+                <article class="interest-card">
+                    <div class="interest-card__icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+                            <path d="M9 7h7M9 11h7" />
+                        </svg>
+                    </div>
+                    <h4>Education</h4>
+                    <p>Graduate &amp; Undergraduate Mentorship</p>
+                    <p>AI in Medicine Webinar Series</p>
+                    <p>Open-Source Research &amp; Datasets</p>
+                    <p>International Collaborative Projects</p>
+                    <p>Interdisciplinary Student Training</p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR APPROACH -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-block">
+                <h2>Our Approach</h2>
+                <p>Healthcare AI is evolving faster than the frameworks meant to govern it. At MIRAI we believe a
+                    model is only as good as the trust it earns &mdash; from the patient whose life it touches, the
+                    clinician who must defend it in practice, and the regulator who must approve it. That belief
+                    drives every step of how we work.</p>
+                <p>We start with <strong>real clinical questions</strong>, not benchmark scores. Every project at
+                    MIRAI begins with a clinical or educational need &mdash; an unmet diagnostic gap, a workflow
+                    barrier, a population that's been overlooked &mdash; and ends only when the resulting AI tool can
+                    be openly evaluated by the people who will actually use it. Along the way we invest heavily in
+                    <strong>explainability</strong>, uncertainty estimation, robustness under data shift, and
+                    transparent reporting, so that domain experts can understand <em>why</em> a model is doing what
+                    it does, not just what it predicts.</p>
+                <p>We also believe that trustworthy AI must be <strong>reproducible AI</strong>. Whenever possible
+                    we release annotated datasets, source code, trained model weights, and lightweight software
+                    applications alongside our publications &mdash; lowering the barrier for low-resource hospitals,
+                    rural clinics, and student researchers to build on what we publish. Open science is not an
+                    afterthought at MIRAI; it is part of the methodology.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION & COLLABORATIONS -->
+    <section class="about-section about-section--alt">
+        <div class="container">
+            <div class="about-block">
+                <h2>Education &amp; Collaborations</h2>
+                <p>MIRAI is, at its heart, a teaching laboratory. We host an active community of PhD and M.Sc
+                    students, research assistants, and undergraduate contributors from across &Uuml;sk&uuml;dar
+                    University and partner institutions worldwide. Students lead their own projects, co-author
+                    publications, present at international venues, and grow into independent researchers under
+                    structured mentorship.</p>
+                <p>Through the <strong>AI in Medicine Webinar Series</strong> &mdash; co-hosted with the &Uuml;sk&uuml;dar
+                    University Department of Software Engineering &mdash; we bring leading voices in clinical AI to a
+                    global audience, free and open to anyone. Past and upcoming sessions explore topics from
+                    responsible AI in healthcare governance to explainable models in musculoskeletal care, with
+                    speakers drawn from major academic and clinical institutions.</p>
+                <p>Our international partnerships extend the reach of every project: collaborations with the
+                    <strong>HExAI Research Laboratory</strong> at the University of Pittsburgh on explainable AI for
+                    musculoskeletal imaging, with the <strong>Brain and Trauma Foundation</strong> in Switzerland on
+                    EEG/ERP and neurofeedback research, and with peer institutions across Europe, North America, and
+                    Asia. These partnerships are how good ideas travel &mdash; and how MIRAI students become global
+                    researchers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-block" style="text-align: center;">
+                <h2>Looking Ahead</h2>
+                <p style="font-size: 19px; line-height: 1.7; text-align: center;">MIRAI's vision is a future where
+                    artificial intelligence quietly augments every layer of clinical care &mdash; making earlier
+                    diagnoses possible, supporting clinicians instead of replacing them, and reaching patients in
+                    places that the traditional healthcare system has historically left behind. We are building toward
+                    that future one careful, trustworthy model at a time, and we welcome students, clinicians, and
+                    collaborators who share that ambition to join us.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <img class="brand-mark" src="assets/logo.png" alt="MIRAI Research Laboratory logo" />
+                    <div class="brand-text">
+                        <span class="brand-line-1">Medical Innovation Research</span>
+                        <span class="brand-line-2">in AI Lab</span>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Address</h3>
+                    <address>
+                        &Uuml;sk&uuml;dar University<br>
+                        Faculty of Engineering and Natural Sciences<br>
+                        Department of Software Engineering<br>
+                        Alt&uuml;nizade Mah., Haluk T&uuml;rks&ouml;y Sk. No: 14<br>
+                        34662 &Uuml;sk&uuml;dar / &Idot;stanbul, T&uuml;rkiye
+                    </address>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p>Email: faezeh[dot]rohani[at]uskudar[dot]edu[dot]tr</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <a href="#top" class="back-to-top" aria-label="Back to top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5" />
+            <path d="M5 12l7-7 7 7" />
+        </svg>
+    </a>
+
+</body>
+
+</html>
