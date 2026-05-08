@@ -336,6 +336,26 @@
             grid-template-columns: repeat(5, minmax(0, 1fr));
         }
 
+        .team-grid--three {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .advisory-row-bottom {
+            margin-top: 40px;
+        }
+
+        @media (max-width: 980px) {
+            .team-grid--three {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .team-grid--three {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .leadership-row-bottom {
             margin-top: 50px;
         }
@@ -1167,7 +1187,8 @@
                 </button>
             </div>
             <div class="collapsible" data-target>
-                <div class="team-grid">
+
+                <div class="team-grid team-grid--three">
 
                     <article class="team-card">
                         <div class="photo-frame">
@@ -1197,6 +1218,10 @@
                         <p class="team-card__role">Academic Advisor</p>
                     </article>
 
+                </div>
+
+                <div class="team-grid team-grid--two advisory-row-bottom">
+
                     <article class="team-card">
                         <div class="photo-frame">
                             <img src="assets/team/ayla-arslan.jpg" alt="Ayla Arslan, PhD"
@@ -1206,7 +1231,17 @@
                         <p class="team-card__role">Academic Advisor</p>
                     </article>
 
+                    <article class="team-card">
+                        <div class="photo-frame">
+                            <img src="assets/team/gamze-uslu.jpg" alt="Gamze Uslu, PhD"
+                                onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                        </div>
+                        <a href="#gamze-uslu" class="team-card__name">Gamze Uslu, PhD</a>
+                        <p class="team-card__role">Academic Advisor</p>
+                    </article>
+
                 </div>
+
             </div>
         </div>
     </section>
@@ -1277,7 +1312,7 @@
                             <img src="assets/team/duran-demirci.jpg" alt="Prof. Dr. Duran Demirci"
                                 onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
                         </div>
-                        <a href="#duran-demirci" class="team-card__name">Duran Demirci, PhD</a>
+                        <a href="#duran-demirci" class="team-card__name">Duran Demirci, PhD </a>
                     </article>
 
                 </div>
@@ -1391,27 +1426,15 @@
                 <div class="team-grid">
                 <article class="team-card">
                     <div class="photo-frame">
-                        <img src="assets/team/payam-ebrahimifakhar.jpg" alt="Payam Ebrahimifakhar"
+                        <img src="assets/team/sayediman-mostafavi.jpg" alt="SayedIman Mostafavi"
                             onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
                     </div>
-                    <a href="#payam-ebrahimifakhar" class="team-card__name">Payam Ebrahimifakhar</a>
-                    <p class="team-card__role">Research Assistant</p>
-                    <p class="team-card__affiliation">MIRAI Research Laboratory</p>
-                </article>    
-
-
-                <article class="team-card">
-                    <div class="photo-frame">
-                        <img src="assets/team/sayed-shaheer-aber.jpg" alt="Sayed Shaheer Aber"
-                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
-                    </div>
-                    <a href="#sayed-shaheer-aber" class="team-card__name">Sayed Shaheer Aber</a>
+                    <a href="#sayediman-mostafavi" class="team-card__name">SayedIman Mostafavi</a>
                     <p class="team-card__role">Research Assistant</p>
                     <p class="team-card__affiliation">MIRAI Research Laboratory</p>
                 </article>
 
-
-                 <article class="team-card">
+                <article class="team-card">
                     <div class="photo-frame">
                         <img src="assets/team/hekmatullah-zurmati.jpg" alt="Hekmatullah Zurmati"
                             onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
@@ -1423,20 +1446,40 @@
 
                 <article class="team-card">
                     <div class="photo-frame">
-                        <img src="assets/team/sayediman-mostafavi.jpg" alt="SayedIman Mostafavi"
+                        <img src="assets/team/sayed-shaheer-aber.jpg" alt="Sayed Shaheer Aber"
                             onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
                     </div>
-                    <a href="#sayediman-mostafavi" class="team-card__name">SayedIman Mostafavi</a>
+                    <a href="#sayed-shaheer-aber" class="team-card__name">Sayed Shaheer Aber</a>
                     <p class="team-card__role">Research Assistant</p>
                     <p class="team-card__affiliation">MIRAI Research Laboratory</p>
                 </article>
 
                 <article class="team-card">
                     <div class="photo-frame">
-                        <img src="assets/team/hanieh-alasti.jpg" alt="Hanieh Alasti"
+                        <img src="assets/team/payam-ebrahimifakhar.jpg" alt="Payam Ebrahimifakhar"
                             onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
                     </div>
-                    <a href="#hanieh-alasti" class="team-card__name">Hanieh Alasti</a>
+                    <a href="#payam-ebrahimifakhar" class="team-card__name">Payam Ebrahimifakhar</a>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">MIRAI Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/soroosh-babaee.jpg" alt="Soroosh Babaee"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#soroosh-babaee" class="team-card__name">Soroosh Babaee</a>
+                    <p class="team-card__role">Research Assistant</p>
+                    <p class="team-card__affiliation">MIRAI Research Laboratory</p>
+                </article>
+
+                <article class="team-card">
+                    <div class="photo-frame">
+                        <img src="assets/team/pouria-parhami.jpg" alt="Pouria Parhami"
+                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
+                    </div>
+                    <a href="#pouria-parhami" class="team-card__name">Pouria Parhami</a>
                     <p class="team-card__role">Research Assistant</p>
                     <p class="team-card__affiliation">IEEE Member</p>
                 </article>
@@ -1451,25 +1494,13 @@
                     <p class="team-card__affiliation">IEEE Member, London, UK<br>(Brunel University of London Alumni)
                     </p>
                 </article>
-                
-                <article class="team-card">
-                    <div class="photo-frame">
-                        <img src="assets/team/soroosh-babaee.jpg" alt="Soroosh Babaee"
-                            onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
-                    </div>
-                    <a href="#soroosh-babaee" class="team-card__name">Soroosh Babaee</a>
-                    <p class="team-card__role">Research Assistant</p>
-                    <p class="team-card__affiliation">MIRAI Research Laboratory</p>
-                </article>
-
-
 
                 <article class="team-card">
                     <div class="photo-frame">
-                        <img src="assets/team/pouria-parhami.jpg" alt="Pouria Parhami"
+                        <img src="assets/team/hanieh-alasti.jpg" alt="Hanieh Alasti"
                             onerror="this.outerHTML='<svg class=&quot;placeholder&quot; viewBox=&quot;0 0 64 64&quot; fill=&quot;currentColor&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;32&quot; cy=&quot;22&quot; r=&quot;12&quot;/><path d=&quot;M10 58c0-12 10-20 22-20s22 8 22 20&quot;/></svg>';" />
                     </div>
-                    <a href="#pouria-parhami" class="team-card__name">Pouria Parhami</a>
+                    <a href="#hanieh-alasti" class="team-card__name">Hanieh Alasti</a>
                     <p class="team-card__role">Research Assistant</p>
                     <p class="team-card__affiliation">IEEE Member</p>
                 </article>
