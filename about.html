@@ -396,6 +396,44 @@
             color: var(--link);
         }
 
+        .about-block h3 {
+            margin: 38px 0 16px;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.2px;
+        }
+
+        .about-block ul {
+            margin: 0 0 22px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .about-block ul li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: 12px;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--ink-soft);
+        }
+
+        .about-block ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1976d2, #2ec97e);
+        }
+
+        .about-block ul li strong {
+            color: var(--ink);
+        }
+
         /* === RESEARCH INTERESTS === */
         .interests-grid {
             display: grid;
@@ -785,50 +823,39 @@
     </section>
 
     <!-- ABOUT MIRAI -->
-  <section style="padding: 60px 20px;">
-  <div style="max-width: 800px; margin: auto;">
+    <section class="about-section">
+        <div class="container">
+            <div class="about-block">
 
-    <h2>About MIRAI</h2>
+                <h2>About MIRAI</h2>
+                <p>Founded and directed by <a href="index.html">Dr. Faezeh Rohani</a> at
+                    <a href="https://uskudar.edu.tr/en" target="_blank" rel="noopener">&Uuml;sk&uuml;dar
+                        University</a>, &Idot;stanbul, the MIRAI Laboratory is a multidisciplinary group dedicated to
+                    advancing explainable and trustworthy AI within medicine, neurotechnology, signal processing,
+                    and robotics.</p>
 
-    <p style="text-align: justify; line-height: 1.7;">
-      Founded and directed by <a href="index.html">Dr. Faezeh Rohani</a> at <a href="https://uskudar.edu.tr/en">Üsküdar University</a>, İstanbul, 
-      the MIRAI Laboratory is a multidisciplinary group dedicated to advancing 
-      explainable and trustworthy AI within medicine, neurotechnology, signal 
-      processing, and robotics.
-    </p>
+                <h3>Research Focus</h3>
+                <p>We develop AI-driven methods to support the full spectrum of healthcare. Our core research
+                    interests include:</p>
+                <ul>
+                    <li><strong>Clinical Intelligence:</strong> AI-assisted diagnosis, clinical decision-support
+                        systems, and medical image analysis.</li>
+                    <li><strong>Neurotechnology &amp; Robotics:</strong> Neurophysiological signal analysis
+                        (EEG/ERP), human&ndash;machine interaction, and healthcare robotics.</li>
+                    <li><strong>Operational Excellence:</strong> Healthcare process mining, patient pathway
+                        analysis, and workflow optimization.</li>
+                </ul>
 
-    <h3>Research Focus</h3>
+                <h3>Data &amp; Methodology</h3>
+                <p>MIRAI integrates machine learning, deep learning, and biomedical signal processing to analyze
+                    diverse datasets, including clinical, behavioral, motor, and medical imaging data. We believe
+                    medical AI must be ethically responsible, interpretable, and reproducible. We actively welcome
+                    interdisciplinary collaborations with hospitals, research centers, and global digital health
+                    teams to create real-world impact.</p>
 
-    <p style="text-align: justify; line-height: 1.7;">
-      We develop AI-driven methods to support the full spectrum of healthcare. 
-      Our core research interests include:
-    </p>
-
-    <ul style="text-align: justify; line-height: 1.7; padding-left: 20px;">
-      <li><strong>Clinical Intelligence:</strong> AI-assisted diagnosis, clinical decision-support systems, and medical image analysis.</li>
-
-      <li><strong>Neurotechnology & Robotics:</strong> Neurophysiological signal analysis (EEG/ERP), human–machine interaction, and healthcare robotics.</li>
-
-      <li><strong>Operational Excellence:</strong> Healthcare process mining, patient pathway analysis, and workflow optimization.</li>
-    </ul>
-
-    <h3>Data & Methodology</h3>
-
-    <p style="text-align: justify; line-height: 1.7;">
-      MIRAI integrates machine learning, deep learning, and biomedical signal 
-      processing to analyze diverse datasets, including clinical, behavioral, 
-      motor, and medical imaging data.
-    </p>
-
-    <p style="text-align: justify; line-height: 1.7;">
-      We believe medical AI must be ethically responsible, interpretable, and 
-      reproducible. We actively welcome interdisciplinary collaborations with 
-      hospitals, research centers, and global digital health teams to create 
-      real-world impact.
-    </p>
-
-  </div>
-</section>
+            </div>
+        </div>
+    </section>
 
     <!-- RESEARCH PILLARS -->
     <section class="about-section about-section--alt">
