@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship | Medical Innovation Research in AI Lab</title>
+    <link rel="icon" href="assets/logo.png">
+    <style>
+        :root {
+            --primary: #1659a4;
+            --primary-dark: #0a3470;
+            --primary-soft: #e7f2fb;
+            --primary-tint: #f2f8fd;
+            --link: #1976d2;
+            --link-hover: #0d4e9b;
+            --accent-gold: #f6b800;
+            --ink: #2b2b2b;
+            --ink-soft: #4a4a4a;
+            --muted: #6b7a8a;
+            --line: #d4e3f1;
+            --bg: #ffffff;
+            --shadow: rgba(10, 52, 112, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        a:hover,
+        a:focus {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        img,
+        svg {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1200px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .top-bar {
+            background: linear-gradient(90deg, #1659a4 0%, #1c7ec0 25%, #1aa6c4 50%, #1cc9b0 75%, #2ec97e 100%);
+            color: #ffffff;
+            font-size: 14px;
+            padding: 10px 0;
+            box-shadow: 0 1px 3px rgba(10, 52, 112, 0.18);
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .site-header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--line);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+        }
+
+        .nav-shell {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            min-height: 110px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: var(--primary);
+            min-width: 280px;
+        }
+
+        .brand-mark {
+            width: 88px;
+            height: 88px;
+            flex: 0 0 88px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-line-1 {
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--primary-dark);
+            letter-spacing: 0.2px;
+        }
+
+        .brand-line-2 {
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+            color: var(--primary);
+            letter-spacing: 0.2px;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .main-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-dark);
+            font-weight: 500;
+            font-size: 17px;
+            padding: 10px 2px;
+            border-bottom: 3px solid transparent;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .main-nav a:hover {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        .main-nav a.is-active {
+            color: var(--link);
+            border-bottom-color: var(--link);
+        }
+
+        .main-nav .icon {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .main-nav .has-caret::after {
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 6px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid currentColor;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            min-width: 240px;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            box-shadow: 0 10px 28px rgba(10, 52, 112, 0.12);
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px);
+            transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+            z-index: 50;
+        }
+
+        .nav-item:hover>.dropdown,
+        .nav-item:focus-within>.dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            color: var(--ink);
+            font-size: 16px;
+            font-weight: 500;
+            border-bottom: none;
+        }
+
+        .dropdown a:hover {
+            background: var(--primary-soft);
+            color: var(--link-hover);
+            text-decoration: none;
+        }
+
+        .page-title {
+            background: var(--primary-soft);
+            padding: 56px 0 64px;
+        }
+
+        .page-title .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .page-title h1 {
+            margin: 0;
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.5px;
+        }
+
+        .breadcrumb {
+            color: var(--ink-soft);
+            font-size: 15px;
+        }
+
+        .breadcrumb a {
+            color: var(--link);
+        }
+
+        .breadcrumb .sep {
+            color: var(--muted);
+            margin: 0 8px;
+        }
+
+        /* === INTERNSHIP CONTENT === */
+        .internship {
+            padding: 80px 0 40px;
+        }
+
+        .intro {
+            max-width: 880px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .intro .eyebrow {
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1.6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 14px;
+        }
+
+        .intro h2 {
+            margin: 0 0 18px;
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.25;
+            letter-spacing: -0.3px;
+        }
+
+        .intro p {
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 17px;
+            line-height: 1.75;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 26px;
+            margin: 0 auto 70px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 28px 26px 26px;
+            box-shadow: 0 10px 28px var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(10, 52, 112, 0.12);
+        }
+
+        .feature-card .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .feature-card .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 8px;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .feature-card p {
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .info-block {
+            background: var(--primary-tint);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 40px 44px;
+            max-width: 980px;
+            margin: 0 auto 50px;
+        }
+
+        .info-block h2 {
+            margin: 0 0 20px;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.2px;
+        }
+
+        .info-block ul {
+            margin: 0;
+            padding-left: 22px;
+            color: var(--ink-soft);
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .info-block ul li::marker {
+            color: var(--primary);
+        }
+
+        .info-block .steps {
+            list-style: none;
+            counter-reset: step-counter;
+            padding-left: 0;
+        }
+
+        .info-block .steps li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 46px;
+            margin-bottom: 14px;
+            color: var(--ink-soft);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .info-block .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 1px;
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .cta {
+            text-align: center;
+            background: linear-gradient(90deg, #1659a4 0%, #1c7ec0 25%, #1aa6c4 50%, #1cc9b0 75%, #2ec97e 100%);
+            border-radius: 14px;
+            padding: 54px 30px;
+            color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto 30px;
+            box-shadow: 0 16px 38px rgba(10, 52, 112, 0.18);
+        }
+
+        .cta h2 {
+            margin: 0 0 12px;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .cta p {
+            margin: 0 0 24px;
+            font-size: 16px;
+            opacity: 0.92;
+            line-height: 1.7;
+        }
+
+        @keyframes ctaPulse {
+            0%   { transform: scale(1);    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22); }
+            50%  { transform: scale(1.07); box-shadow: 0 12px 26px rgba(0, 0, 0, 0.30); }
+            100% { transform: scale(1);    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22); }
+        }
+
+        .cta .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: #ffffff;
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+            transition: background 0.18s ease, color 0.18s ease;
+            animation: ctaPulse 2.2s ease-in-out infinite;
+            transform-origin: center;
+            will-change: transform;
+        }
+
+        .cta .cta-btn:hover {
+            animation-play-state: paused;
+            transform: scale(1.1);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
+            text-decoration: none;
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cta .cta-btn {
+                animation: none;
+            }
+        }
+
+        .cta .cta-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @media (max-width: 900px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-block {
+                padding: 32px 26px;
+            }
+        }
+
+        /* === FOOTER === */
+        .site-footer {
+            background: #ffffff;
+            border-top: 1px solid var(--line);
+            padding: 60px 0 70px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1.4fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .footer-brand .brand-mark {
+            width: 100px;
+            height: 100px;
+            flex: 0 0 100px;
+        }
+
+        .footer-brand .brand-line-1 {
+            font-size: 24px;
+        }
+
+        .footer-brand .brand-line-2 {
+            font-size: 22px;
+        }
+
+        .footer-col h3 {
+            margin: 0 0 14px;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .footer-col p,
+        .footer-col address {
+            font-style: normal;
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 16px;
+            line-height: 1.85;
+        }
+
+        .footer-col a {
+            color: var(--link);
+        }
+
+        .back-to-top {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 6px;
+            background: var(--link);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(25, 118, 210, 0.35);
+            text-decoration: none;
+            z-index: 40;
+        }
+
+        @media (max-width: 980px) {
+            .nav-shell {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 18px 0;
+                gap: 18px;
+                min-height: 0;
+            }
+
+            .main-nav {
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+
+            .dropdown {
+                right: auto;
+                left: 0;
+                min-width: 220px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .page-title h1 {
+                font-size: 34px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-bar .container {
+                justify-content: center;
+            }
+
+            .brand-mark {
+                width: 72px;
+                height: 72px;
+                flex: 0 0 72px;
+            }
+
+            .brand-line-1 {
+                font-size: 22px;
+            }
+
+            .brand-line-2 {
+                font-size: 18px;
+            }
+
+            .main-nav {
+                gap: 14px;
+            }
+
+            .main-nav a {
+                font-size: 15px;
+            }
+
+            .page-title {
+                padding: 40px 0 44px;
+            }
+
+            .page-title h1 {
+                font-size: 28px;
+            }
+
+            .internship {
+                padding: 50px 0 20px;
+            }
+
+            .intro h2 {
+                font-size: 24px;
+            }
+
+            .info-block h2,
+            .cta h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP AFFILIATION BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <a href="https://uskudar.edu.tr/en" target="_blank" rel="noopener">&Uuml;sk&uuml;dar University</a>
+        </div>
+    </div>
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+        <div class="container nav-shell">
+
+            <a class="brand" href="index.html" aria-label="Medical Innovation Research in AI Lab home">
+                <img class="brand-mark" src="assets/logo.png" alt="Medical Innovation Research in AI Lab logo" />
+                <div class="brand-text">
+                    <span class="brand-line-1">Medical Innovation Research</span>
+                    <span class="brand-line-2">in AI Lab</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" aria-label="Primary">
+                <a href="about.html">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 11l9-8 9 8" />
+                        <path d="M5 10v10h14V10" />
+                    </svg>
+                    Home
+                </a>
+                <a href="team.html">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="9" cy="8" r="3.2" />
+                        <circle cx="17" cy="9" r="2.6" />
+                        <path d="M3 19c.8-3 3.4-4.6 6-4.6s5.2 1.6 6 4.6" />
+                        <path d="M14.5 19c.6-2.2 2.6-3.4 4.5-3.4 1.2 0 2.2.4 2.9 1" />
+                    </svg>
+                    Team
+                </a>
+                <a href="events.html">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3.5" y="5" width="17" height="15" rx="1.5" />
+                        <path d="M3.5 10h17" />
+                        <path d="M8 3v4M16 3v4" />
+                    </svg>
+                    AI Events
+                </a>
+                <a href="internship.html" class="is-active">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3" y="8" width="18" height="12" rx="1.5" />
+                        <path d="M8 8V6a2 2 0 012-2h4a2 2 0 012 2v2" />
+                        <path d="M3 13h18" />
+                    </svg>
+                    Internship
+                </a>
+                <div class="nav-item">
+                    <a href="#research" class="has-caret" aria-haspopup="true" aria-expanded="false">
+                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="6" />
+                            <path d="M20 20l-4.4-4.4" />
+                        </svg>
+                        Research
+                    </a>
+                    <div class="dropdown" role="menu">
+                        <a href="#projects" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 4h11l3 3v13H5z" />
+                                <path d="M9 9h6M9 13h6M9 17h4" />
+                            </svg>
+                            Projects
+                        </a>
+                        <a href="publications.html" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4 5a2 2 0 012-2h12v18H6a2 2 0 01-2-2V5z" />
+                                <path d="M8 7h8M8 11h8M8 15h6" />
+                            </svg>
+                            Publications
+                        </a>
+                        <a href="#openings" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 21V5a2 2 0 012-2h7l5 5v13" />
+                                <path d="M14 3v6h5" />
+                                <path d="M9 14h6M9 17h4" />
+                            </svg>
+                            Openings
+                        </a>
+                        <a href="https://github.com/" target="_blank" rel="noopener" role="menuitem">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.12-1.47-1.12-1.47-.92-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.9 1.54 2.36 1.1 2.94.84.09-.65.35-1.1.64-1.35-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0112 6.8c.85.004 1.7.115 2.5.34 1.9-1.3 2.74-1.03 2.74-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z" />
+                            </svg>
+                            GitHub Repositories
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE TITLE STRIP -->
+    <section class="page-title" id="top">
+        <div class="container">
+            <h1>Internship</h1>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="about.html">Home</a><span class="sep">/</span>
+                <span>Internship</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- INTERNSHIP CONTENT -->
+    <section class="internship">
+        <div class="container">
+
+            <!-- Intro -->
+            <div class="intro">
+                <span class="eyebrow">Join Our Research Family</span>
+                <h2>We are offering internships at MIRAI.</h2>
+                <p>
+                    Our lab welcomes motivated undergraduate and graduate students who are passionate about
+                    artificial intelligence, machine learning, and their applications in medicine and
+                    healthcare. As an intern, you will work alongside our faculty, researchers, and PhD
+                    students on real, high-impact projects that shape the future of AI in clinical practice.
+                </p>
+            </div>
+
+            <!-- What you get -->
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path d="M12 14v7" />
+                            <path d="M6 10.5v4c0 1.7 2.7 3 6 3s6-1.3 6-3v-4" />
+                        </svg>
+                    </div>
+                    <h3>Hands-on Research</h3>
+                    <p>Contribute to ongoing studies in medical AI &mdash; from data curation and model
+                        development to clinical validation and scientific writing.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="9" cy="8" r="3.2" />
+                            <circle cx="17" cy="9" r="2.6" />
+                            <path d="M3 19c.8-3 3.4-4.6 6-4.6s5.2 1.6 6 4.6" />
+                            <path d="M14.5 19c.6-2.2 2.6-3.4 4.5-3.4 1.2 0 2.2.4 2.9 1" />
+                        </svg>
+                    </div>
+                    <h3>Mentorship</h3>
+                    <p>Receive personal guidance from faculty members, postdoctoral researchers, and senior
+                        students throughout your internship journey.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2l3 6 6.5.9-4.7 4.6 1.1 6.5L12 17l-5.9 3 1.1-6.5L2.5 8.9 9 8z" />
+                        </svg>
+                    </div>
+                    <h3>Publish &amp; Present</h3>
+                    <p>Outstanding interns have the opportunity to co-author peer-reviewed papers and
+                        present results at international conferences and workshops.</p>
+                </div>
+            </div>
+
+            <!-- Who can apply -->
+            <div class="info-block">
+                <h2>Who Can Apply</h2>
+                <ul>
+                    <li>Undergraduate or graduate students in Computer Science, Computer Engineering,
+                        Software Engineering, Biomedical Engineering, Data Science, or a related
+                        discipline.</li>
+                    <li>Solid programming skills (Python preferred) and familiarity with machine learning
+                        or deep learning frameworks such as PyTorch or TensorFlow.</li>
+                    <li>Strong curiosity about medical and healthcare applications of AI, and a willingness
+                        to learn across disciplines.</li>
+                    <li>Ability to commit at least 8&ndash;12 hours per week for a minimum of three months
+                        (remote and on-site options available).</li>
+                </ul>
+            </div>
+
+            <!-- How to apply -->
+            <div class="info-block">
+                <h2>How to Apply</h2>
+                <ol class="steps">
+                    <li>Prepare your up-to-date <strong>CV</strong> together with a short <strong>statement
+                            of interest</strong> (half a page is enough) describing the research topics that
+                        excite you.</li>
+                    <li>Attach a transcript of records and, if available, links to GitHub repositories,
+                        publications, or course projects relevant to AI or healthcare.</li>
+                    <li>Send your application by email to our lab with the subject line
+                        <strong>&ldquo;Internship Application &ndash; [Your Full Name]&rdquo;</strong>.</li>
+                    <li>Shortlisted candidates will be invited for a brief online interview with a faculty
+                        member or a senior researcher.</li>
+                </ol>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta">
+                <h2>Ready to start your research journey with us?</h2>
+                <p>We review applications on a rolling basis throughout the year. Get in touch and tell us
+                    about your interests &mdash; we would love to hear from you.</p>
+                <a class="cta-btn"
+                    href="mailto:faezeh.rohani@uskudar.edu.tr?subject=Internship%20Application%20-%20%5BYour%20Full%20Name%5D">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 6h16v12H4z" />
+                        <path d="M4 6l8 7 8-7" />
+                    </svg>
+                    Apply by Email
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <img class="brand-mark" src="assets/logo.png"
+                        alt="Medical Innovation Research in AI Lab logo" />
+                    <div class="brand-text">
+                        <span class="brand-line-1">Medical Innovation Research</span>
+                        <span class="brand-line-2">in AI Lab</span>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Address</h3>
+                    <address>
+                        &Uuml;sk&uuml;dar University<br>
+                        Faculty of Engineering and Natural Sciences<br>
+                        Department of Software Engineering<br>
+                        Alt&uuml;nizade Mah., Haluk T&uuml;rks&ouml;y Sk. No: 14<br>
+                        34662 &Uuml;sk&uuml;dar / &Idot;stanbul, T&uuml;rkiye
+                    </address>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p>Email: faezeh[dot]rohani[at]uskudar[dot]edu[dot]tr</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <a href="#top" class="back-to-top" aria-label="Back to top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5" />
+            <path d="M5 12l7-7 7 7" />
+        </svg>
+    </a>
+
+</body>
+
+</html>
