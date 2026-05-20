@@ -446,6 +446,29 @@
             color: var(--ink);
         }
 
+        .event-card__recording {
+            margin-top: 22px;
+        }
+
+        .event-card__recording-label {
+            display: block;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .event-card__video {
+            display: block;
+            width: 100%;
+            height: auto;
+            background: #000;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(10, 52, 112, 0.15);
+        }
+
         @media (max-width: 700px) {
             .event-card__body {
                 padding: 22px;
@@ -739,6 +762,16 @@
                         <strong>Date:</strong> Thursday, May 7, 2026 &middot; <strong>Time:</strong> 3:00 PM Istanbul
                         Time (GMT +3) &middot; <strong>Location:</strong> Google Meet
                     </p>
+                    <div class="event-card__recording">
+                        <span class="event-card__recording-label">Webinar Recording</span>
+                        <video class="event-card__video" controls preload="metadata"
+                            poster="assets/events/event-1.png">
+                            <source src="assets/events/first-do-no-harm-recording.mp4" type="video/mp4">
+                            Your browser does not support embedded video. You can
+                            <a href="assets/events/first-do-no-harm-recording.mp4">download the recording</a>
+                            instead.
+                        </video>
+                    </div>
                 </div>
             </article>
 
