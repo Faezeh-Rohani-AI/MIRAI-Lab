@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship | Medical Innovation Research in AI Lab</title>
+    <title>Projects | Medical Innovation Research in AI Lab</title>
     <link rel="icon" href="assets/logo.png">
     <style>
         :root {
@@ -263,79 +263,217 @@
             margin: 0 8px;
         }
 
-        /* === INTERNSHIP CONTENT === */
-        .internship {
+        /* === PROJECTS === */
+        .projects {
             padding: 80px 0 40px;
         }
 
-        .intro {
-            max-width: 880px;
-            margin: 0 auto 60px;
+        /* Section toggle (collapsible group) */
+        .section-toggle-wrap {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 16px;
+            margin: 0 0 50px;
+        }
+
+        .learn-more-hint {
+            justify-self: start;
+            color: var(--ink-soft);
+            font-size: 14px;
+            margin: 0;
+            line-height: 1.4;
+            user-select: none;
+            background: transparent;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+            text-align: left;
+            cursor: pointer;
+            transition: color 0.18s ease;
+        }
+
+        .learn-more-hint:hover {
+            color: var(--link);
+        }
+
+        .learn-more-hint:focus-visible {
+            outline: 2px solid var(--link);
+            outline-offset: 4px;
+            border-radius: 3px;
+        }
+
+        .learn-more-hint::before {
+            content: "\25B6";
+            margin-right: 6px;
+            font-size: 11px;
+            color: var(--muted);
+            transition: transform 0.4s ease;
+            display: inline-block;
+        }
+
+        .learn-more-hint.is-open::before {
+            transform: rotate(90deg);
+        }
+
+        .section-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0;
+            background: transparent;
+            border: none;
+            font-family: inherit;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--ink-soft);
+            cursor: pointer;
+            transition: color 0.2s ease;
+            letter-spacing: -0.2px;
             text-align: center;
         }
 
-        .intro .eyebrow {
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 1.6px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 14px;
+        .section-toggle:hover {
+            color: var(--link);
         }
 
-        .intro h2 {
-            margin: 0 0 18px;
-            font-size: 30px;
-            font-weight: 700;
-            color: var(--ink);
-            line-height: 1.25;
-            letter-spacing: -0.3px;
+        .section-toggle:focus-visible {
+            outline: 2px solid var(--link);
+            outline-offset: 6px;
+            border-radius: 4px;
         }
 
-        .intro p {
-            margin: 0;
-            color: var(--ink-soft);
-            font-size: 17px;
-            line-height: 1.75;
+        .section-toggle .arrow {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.4s ease;
+            opacity: 0.7;
         }
 
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 26px;
+        .section-toggle.is-open .arrow {
+            transform: rotate(180deg);
+        }
+
+        .collapsible {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.8s ease;
+        }
+
+        .collapsible.is-open {
+            max-height: 6000px;
+        }
+
+        .collapsible>* {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease 0.05s, transform 0.6s ease 0.05s;
+        }
+
+        .collapsible.is-open>* {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 760px) {
+            .section-toggle-wrap {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                justify-items: center;
+                text-align: center;
+            }
+
+            .learn-more-hint {
+                justify-self: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .section-toggle {
+                font-size: 26px;
+            }
+        }
+
+        .project-card {
+            max-width: 980px;
             margin: 0 auto 70px;
-        }
-
-        .feature-card {
             background: #ffffff;
             border: 1px solid var(--line);
-            border-radius: 10px;
-            padding: 28px 26px 26px;
-            box-shadow: 0 10px 28px var(--shadow);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 14px;
+            box-shadow: 0 14px 36px var(--shadow);
+            overflow: hidden;
         }
 
-        .feature-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 32px rgba(10, 52, 112, 0.12);
+        .project-hero {
+            background: linear-gradient(90deg, #1659a4 0%, #1c7ec0 25%, #1aa6c4 50%, #1cc9b0 75%, #2ec97e 100%);
+            color: #ffffff;
+            padding: 70px 40px 60px;
+            text-align: center;
         }
 
-        .feature-card .feature-icon {
-            width: 48px;
-            height: 48px;
+        .project-hero h2 {
+            font-family: "Cormorant Garamond", "Playfair Display", "Times New Roman", serif;
+            font-weight: 500;
+            font-size: 72px;
+            letter-spacing: 0.5px;
+            margin: 0 0 28px;
+            line-height: 1.1;
+            color: #ffffff;
+        }
+
+        .project-hero .project-subtitle {
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            font-size: 22px;
+            font-weight: 400;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.92);
+            letter-spacing: 0.3px;
+        }
+
+        .project-body {
+            padding: 36px 40px 44px;
+        }
+
+        .video-wrap {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: #000;
             border-radius: 10px;
-            background: var(--primary-soft);
-            color: var(--primary);
-            display: flex;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(10, 52, 112, 0.15);
+        }
+
+        .video-wrap iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .project-link-row {
+            margin-top: 22px;
+            text-align: center;
+        }
+
+        .project-link-row a {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
+            gap: 8px;
+            color: var(--link);
+            font-weight: 600;
+            font-size: 15px;
         }
 
-        .feature-card .feature-icon svg {
-            width: 24px;
-            height: 24px;
+        .project-link-row svg {
+            width: 16px;
+            height: 16px;
             stroke: currentColor;
             fill: none;
             stroke-width: 2;
@@ -343,163 +481,21 @@
             stroke-linejoin: round;
         }
 
-        .feature-card h3 {
-            margin: 0 0 8px;
-            font-size: 19px;
-            font-weight: 700;
-            color: var(--ink);
-        }
-
-        .feature-card p {
-            margin: 0;
-            color: var(--ink-soft);
-            font-size: 15px;
-            line-height: 1.65;
-        }
-
-        .info-block {
-            background: var(--primary-tint);
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 40px 44px;
-            max-width: 980px;
-            margin: 0 auto 50px;
-        }
-
-        .info-block h2 {
-            margin: 0 0 20px;
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--ink);
-            letter-spacing: -0.2px;
-        }
-
-        .info-block ul {
-            margin: 0;
-            padding-left: 22px;
-            color: var(--ink-soft);
-            font-size: 16px;
-            line-height: 1.9;
-        }
-
-        .info-block ul li::marker {
-            color: var(--primary);
-        }
-
-        .info-block .steps {
-            list-style: none;
-            counter-reset: step-counter;
-            padding-left: 0;
-        }
-
-        .info-block .steps li {
-            counter-increment: step-counter;
-            position: relative;
-            padding-left: 46px;
-            margin-bottom: 14px;
-            color: var(--ink-soft);
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        .info-block .steps li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 1px;
-            width: 30px;
-            height: 30px;
-            background: var(--primary);
-            color: #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .cta {
-            text-align: center;
-            background: linear-gradient(90deg, #1659a4 0%, #1c7ec0 25%, #1aa6c4 50%, #1cc9b0 75%, #2ec97e 100%);
-            border-radius: 14px;
-            padding: 54px 30px;
-            color: #ffffff;
-            max-width: 980px;
-            margin: 0 auto 30px;
-            box-shadow: 0 16px 38px rgba(10, 52, 112, 0.18);
-        }
-
-        .cta h2 {
-            margin: 0 0 12px;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-
-        .cta p {
-            margin: 0 0 24px;
-            font-size: 16px;
-            opacity: 0.92;
-            line-height: 1.7;
-        }
-
-        @keyframes ctaPulse {
-            0%   { transform: scale(1);    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22); }
-            50%  { transform: scale(1.07); box-shadow: 0 12px 26px rgba(0, 0, 0, 0.30); }
-            100% { transform: scale(1);    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22); }
-        }
-
-        .cta .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 28px;
-            background: #ffffff;
-            color: var(--primary-dark);
-            font-weight: 700;
-            font-size: 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
-            transition: background 0.18s ease, color 0.18s ease;
-            animation: ctaPulse 2.2s ease-in-out infinite;
-            transform-origin: center;
-            will-change: transform;
-        }
-
-        .cta .cta-btn:hover {
-            animation-play-state: paused;
-            transform: scale(1.1);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
-            text-decoration: none;
-            background: var(--primary-soft);
-            color: var(--primary-dark);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .cta .cta-btn {
-                animation: none;
-            }
-        }
-
-        .cta .cta-btn svg {
-            width: 18px;
-            height: 18px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2.2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        @media (max-width: 900px) {
-            .feature-grid {
-                grid-template-columns: 1fr;
+        @media (max-width: 760px) {
+            .project-hero {
+                padding: 50px 24px 44px;
             }
 
-            .info-block {
-                padding: 32px 26px;
+            .project-hero h2 {
+                font-size: 48px;
+            }
+
+            .project-hero .project-subtitle {
+                font-size: 17px;
+            }
+
+            .project-body {
+                padding: 26px 22px 32px;
             }
         }
 
@@ -639,20 +635,15 @@
                 font-size: 28px;
             }
 
-            .internship {
+            .projects {
                 padding: 50px 0 20px;
-            }
-
-            .intro h2 {
-                font-size: 24px;
-            }
-
-            .info-block h2,
-            .cta h2 {
-                font-size: 22px;
             }
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -701,7 +692,7 @@
                     </svg>
                     AI Events
                 </a>
-                <a href="internship.html" class="is-active">
+                <a href="internship.html">
                     <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
                         <rect x="3" y="8" width="18" height="12" rx="1.5" />
                         <path d="M8 8V6a2 2 0 012-2h4a2 2 0 012 2v2" />
@@ -710,7 +701,7 @@
                     Internship
                 </a>
                 <div class="nav-item">
-                    <a href="#research" class="has-caret" aria-haspopup="true" aria-expanded="false">
+                    <a href="#research" class="has-caret is-active" aria-haspopup="true" aria-expanded="false">
                         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
                             <circle cx="11" cy="11" r="6" />
                             <path d="M20 20l-4.4-4.4" />
@@ -759,117 +750,56 @@
     <!-- PAGE TITLE STRIP -->
     <section class="page-title" id="top">
         <div class="container">
-            <h1>Internship</h1>
+            <h1>Projects</h1>
             <nav class="breadcrumb" aria-label="Breadcrumb">
                 <a href="about.html">Home</a><span class="sep">/</span>
-                <span>Internship</span>
+                <span>Projects</span>
             </nav>
         </div>
     </section>
 
-    <!-- INTERNSHIP CONTENT -->
-    <section class="internship">
+    <!-- PROJECTS LIST -->
+    <section class="projects">
         <div class="container">
 
-            <!-- Intro -->
-            <div class="intro">
-                <span class="eyebrow">Join Our Research Family</span>
-                <h2>We are offering internships at MIRAI.</h2>
-                <p>
-                    Our lab welcomes motivated undergraduate and graduate students who are passionate about
-                    artificial intelligence, machine learning, and their applications in medicine and
-                    healthcare. As an intern, you will work alongside our faculty, researchers, and PhD
-                    students on real, high-impact projects that shape the future of AI in clinical practice.
-                </p>
-            </div>
-
-            <!-- What you get -->
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                            <path d="M12 14v7" />
-                            <path d="M6 10.5v4c0 1.7 2.7 3 6 3s6-1.3 6-3v-4" />
-                        </svg>
-                    </div>
-                    <h3>Hands-on Research</h3>
-                    <p>Contribute to ongoing studies in medical AI &mdash; from data curation and model
-                        development to clinical validation and scientific writing.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <circle cx="9" cy="8" r="3.2" />
-                            <circle cx="17" cy="9" r="2.6" />
-                            <path d="M3 19c.8-3 3.4-4.6 6-4.6s5.2 1.6 6 4.6" />
-                            <path d="M14.5 19c.6-2.2 2.6-3.4 4.5-3.4 1.2 0 2.2.4 2.9 1" />
-                        </svg>
-                    </div>
-                    <h3>Mentorship</h3>
-                    <p>Receive personal guidance from faculty members, postdoctoral researchers, and senior
-                        students throughout your internship journey.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 2l3 6 6.5.9-4.7 4.6 1.1 6.5L12 17l-5.9 3 1.1-6.5L2.5 8.9 9 8z" />
-                        </svg>
-                    </div>
-                    <h3>Publish &amp; Present</h3>
-                    <p>Outstanding interns have the opportunity to co-author peer-reviewed papers and
-                        present results at international conferences and workshops.</p>
-                </div>
-            </div>
-
-            <!-- Who can apply -->
-            <div class="info-block">
-                <h2>Who Can Apply</h2>
-                <ul>
-                    <li>Undergraduate or graduate students in Computer Science, Computer Engineering,
-                        Software Engineering, Biomedical Engineering, Data Science, or a related
-                        discipline.</li>
-                    <li>A cumulative GPA above 2.8 (on a 4.0 scale) is required.</li>
-                    <li>Solid programming skills (Python preferred) and familiarity with machine learning
-                        or deep learning frameworks such as PyTorch or TensorFlow.</li>
-                    <li>Strong curiosity about medical and healthcare applications of AI, and a willingness
-                        to learn across disciplines.</li>
-                    <li>Ability to commit at least 8&ndash;12 hours per week for a minimum of three months
-                        (remote and on-site options available).</li>
-                </ul>
-            </div>
-
-            <!-- How to apply -->
-            <div class="info-block">
-                <h2>How to Apply</h2>
-                <ol class="steps">
-                    <li>Prepare your up-to-date <strong>CV</strong> together with a short <strong>statement
-                            of interest</strong> (half a page is enough) describing the research topics that
-                        excite you.</li>
-                    <li>Attach a transcript of records and, if available, links to GitHub repositories,
-                        publications, or course projects relevant to AI or healthcare.</li>
-                    <li>Send your application by email to our lab with the subject line
-                        <strong>&ldquo;Internship Application &ndash; [Your Full Name]&rdquo;</strong>.</li>
-                    <li>Shortlisted candidates will be invited for a brief online interview with a faculty
-                        member or a senior researcher.</li>
-                </ol>
-            </div>
-
-            <!-- CTA -->
-            <div class="cta">
-                <h2>Ready to start your research journey with us?</h2>
-                <p>We review applications on a rolling basis throughout the year. Get in touch and tell us
-                    about your interests &mdash; we would love to hear from you.</p>
-                <a class="cta-btn"
-                    href="mailto:faezeh.rohani@uskudar.edu.tr?subject=Internship%20Application%20-%20%5BYour%20Full%20Name%5D">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M4 6h16v12H4z" />
-                        <path d="M4 6l8 7 8-7" />
+            <div class="section-toggle-wrap">
+                <button type="button" class="learn-more-hint" aria-expanded="false" data-toggle>Learn more about our T&Uuml;B&Idot;TAK accepted projects!</button>
+                <button type="button" class="section-toggle" aria-expanded="false" data-toggle>
+                    T&Uuml;B&Idot;TAK Accepted Projects
+                    <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 9l6 6 6-6" />
                     </svg>
-                    Apply by Email
-                </a>
+                </button>
+            </div>
+            <div class="collapsible" data-target>
+
+                <!-- SignBridge -->
+                <article class="project-card">
+                    <div class="project-hero">
+                        <h2>SignBridge</h2>
+                        <p class="project-subtitle">Real-Time Turkish Sign Language Recognition System</p>
+                    </div>
+                    <div class="project-body">
+                        <div class="video-wrap">
+                            <iframe src="https://www.youtube.com/embed/Cbw5Y_W-o4I"
+                                title="SignBridge &mdash; Real-Time Turkish Sign Language Recognition System"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="project-link-row">
+                            <a href="https://www.youtube.com/watch?v=Cbw5Y_W-o4I" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M14 3h7v7" />
+                                    <path d="M10 14L21 3" />
+                                    <path d="M21 14v7H3V3h7" />
+                                </svg>
+                                Watch on YouTube
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
             </div>
 
         </div>
@@ -916,6 +846,27 @@
             <path d="M5 12l7-7 7 7" />
         </svg>
     </a>
+
+    <script>
+        (function () {
+            var wraps = document.querySelectorAll('.section-toggle-wrap');
+            wraps.forEach(function (wrap) {
+                var target = wrap.nextElementSibling;
+                if (!target || !target.hasAttribute('data-target')) return;
+                var toggles = wrap.querySelectorAll('[data-toggle]');
+                if (!toggles.length) return;
+                toggles.forEach(function (t) {
+                    t.addEventListener('click', function () {
+                        var open = target.classList.toggle('is-open');
+                        toggles.forEach(function (other) {
+                            other.classList.toggle('is-open', open);
+                            other.setAttribute('aria-expanded', open ? 'true' : 'false');
+                        });
+                    });
+                });
+            });
+        })();
+    </script>
 
 </body>
 
