@@ -419,6 +419,59 @@
             font-weight: 700;
         }
 
+        .info-block .info-lede {
+            margin: 0 0 22px;
+            color: var(--ink-soft);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .interns-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .intern-card {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: 16px 18px;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .intern-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(10, 52, 112, 0.10);
+        }
+
+        .intern-card .intern-name {
+            margin: 0 0 4px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .intern-card .intern-name a {
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .intern-card .intern-name a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .intern-card .intern-id {
+            margin: 0;
+            font-size: 13px;
+            color: var(--muted);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.2px;
+        }
+
         .cta {
             text-align: center;
             background: linear-gradient(90deg, #1659a4 0%, #1c7ec0 25%, #1aa6c4 50%, #1cc9b0 75%, #2ec97e 100%);
@@ -498,8 +551,18 @@
                 grid-template-columns: 1fr;
             }
 
+            .interns-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .info-block {
                 padding: 32px 26px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .interns-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -855,6 +918,42 @@
                     <li>Shortlisted candidates will be invited for a brief online interview with a faculty
                         member or a senior researcher.</li>
                 </ol>
+            </div>
+
+            <!-- Current interns -->
+            <div class="info-block">
+                <h2>Current Interns</h2>
+                <p class="info-lede">Meet the students currently completing their internship with MIRAI:</p>
+                <div class="interns-grid">
+                    <div class="intern-card">
+                        <p class="intern-name">Ahmed Alshaibani</p>
+                        <p class="intern-id">Student ID: 230209903</p>
+                    </div>
+                    <div class="intern-card">
+                        <p class="intern-name">Amir Tawtah</p>
+                        <p class="intern-id">Student ID: 220209956</p>
+                    </div>
+                    <div class="intern-card">
+                        <p class="intern-name">Ekram Adleh</p>
+                        <p class="intern-id">Student ID: 230209921</p>
+                    </div>
+                    <div class="intern-card">
+                        <p class="intern-name">Mohanad Al-Gumaei</p>
+                        <p class="intern-id">Student ID: 220209980</p>
+                    </div>
+                    <div class="intern-card">
+                        <p class="intern-name">Zehra Bayat</p>
+                        <p class="intern-id">Student ID: 230209056</p>
+                    </div>
+                    <div class="intern-card">
+                        <p class="intern-name">Yaren Aras</p>
+                        <p class="intern-id">Student ID: 230209068</p>
+                    </div>
+                    <div class="intern-card">
+                        <p class="intern-name">SayedIman Mostafavi</p>
+                        <p class="intern-id">Student ID: 230209904</p>
+                    </div>
+                </div>
             </div>
 
             <!-- CTA -->
