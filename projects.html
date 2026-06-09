@@ -277,6 +277,10 @@
             margin: 0 0 50px;
         }
 
+        .collapsible + .section-toggle-wrap {
+            margin-top: 80px;
+        }
+
         .learn-more-hint {
             justify-self: start;
             color: var(--ink-soft);
@@ -481,6 +485,149 @@
             stroke-linejoin: round;
         }
 
+        /* === AWARD PROJECT === */
+        .award-card .project-hero {
+            position: relative;
+        }
+
+        .award-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.35);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border-radius: 999px;
+            margin-bottom: 18px;
+            backdrop-filter: blur(2px);
+        }
+
+        .award-badge svg {
+            width: 16px;
+            height: 16px;
+            fill: #f6b800;
+            stroke: #f6b800;
+            stroke-width: 1;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .certificate-wrap {
+            background: var(--primary-tint);
+            border: 2px dashed var(--line);
+            border-radius: 12px;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 18px;
+            overflow: hidden;
+        }
+
+        .certificate-wrap img {
+            max-width: 100%;
+            max-height: 380px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(10, 52, 112, 0.18);
+        }
+
+        .certificate-caption {
+            margin: 12px 0 0;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink-soft);
+            letter-spacing: 0.3px;
+        }
+
+        .certificate-placeholder {
+            color: var(--muted);
+        }
+
+        .certificate-placeholder svg {
+            width: 64px;
+            height: 64px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            margin: 0 auto 14px;
+            opacity: 0.7;
+        }
+
+        .certificate-placeholder p {
+            margin: 0;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        .team-credits {
+            background: var(--primary-tint);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 26px 28px;
+        }
+
+        .team-credits h3 {
+            margin: 0 0 16px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: 0.3px;
+        }
+
+        .team-credits .credits-row {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .team-credits .credit {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: 14px 16px;
+        }
+
+        .team-credits .credit .role-tag {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .team-credits .credit .person {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .team-credits .credit .person a {
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .team-credits .credit .person a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
         @media (max-width: 760px) {
             .project-hero {
                 padding: 50px 24px 44px;
@@ -496,6 +643,18 @@
 
             .project-body {
                 padding: 26px 22px 32px;
+            }
+
+            .team-credits .credits-row {
+                grid-template-columns: 1fr;
+            }
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .certificate-wrap {
+                min-height: 220px;
             }
         }
 
@@ -796,6 +955,65 @@
                                 </svg>
                                 Watch on YouTube
                             </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- AWARDS & RECOGNITION -->
+            <div class="section-toggle-wrap">
+                <button type="button" class="learn-more-hint" aria-expanded="false" data-toggle>Learn more about our award-winning projects!</button>
+                <button type="button" class="section-toggle" aria-expanded="false" data-toggle>
+                    Awards &amp; Recognition
+                    <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </button>
+            </div>
+            <div class="collapsible" data-target>
+
+                <!-- 1st Place at Üsküdar University -->
+                <article class="project-card award-card">
+                    <div class="project-hero">
+                        <span class="award-badge">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2l3 6 6.5.9-4.7 4.6 1.1 6.5L12 17l-5.9 3 1.1-6.5L2.5 8.9 9 8z" />
+                            </svg>
+                            1st Place
+                        </span>
+                        <h2>Medical AI Research Project</h2>
+                        <p class="project-subtitle">First Place &mdash; Engineering &amp; Natural Sciences Student Congress, &Uuml;sk&uuml;dar University</p>
+                    </div>
+                    <div class="project-body">
+                        <div class="certificates-grid">
+                            <div class="certificate-wrap">
+                                <img src="assets/projects/uskudar-1st-place.jpg" alt="1st Place Certificate &mdash; Üsküdar University"
+                                    onerror="this.parentElement.innerHTML='<div class=&quot;certificate-placeholder&quot;><svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot;><rect x=&quot;3&quot; y=&quot;4&quot; width=&quot;18&quot; height=&quot;14&quot; rx=&quot;2&quot;/><path d=&quot;M3 9h18&quot;/><circle cx=&quot;12&quot; cy=&quot;14&quot; r=&quot;2.5&quot;/><path d=&quot;M10.5 16l-1 4 2.5-1.4L14.5 20l-1-4&quot;/></svg><p>Award photo coming soon</p></div><p class=&quot;certificate-caption&quot;>1st Place Award</p>';" />
+                                <p class="certificate-caption">1st Place Award</p>
+                            </div>
+                            <div class="certificate-wrap">
+                                <img src="assets/projects/uskudar-tesekkur.jpg" alt="Teşekkür Belgesi — Üsküdar University Student Congress"
+                                    onerror="this.parentElement.innerHTML='<div class=&quot;certificate-placeholder&quot;><svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot;><rect x=&quot;3&quot; y=&quot;4&quot; width=&quot;18&quot; height=&quot;14&quot; rx=&quot;2&quot;/><path d=&quot;M3 9h18&quot;/><circle cx=&quot;12&quot; cy=&quot;14&quot; r=&quot;2.5&quot;/><path d=&quot;M10.5 16l-1 4 2.5-1.4L14.5 20l-1-4&quot;/></svg><p>Certificate photo coming soon</p></div><p class=&quot;certificate-caption&quot;>Te&scaron;ekk&uuml;r Belgesi &mdash; Student Congress</p>';" />
+                                <p class="certificate-caption">Te&scaron;ekk&uuml;r Belgesi &mdash; Student Congress</p>
+                            </div>
+                        </div>
+                        <div class="team-credits">
+                            <h3>Project Team</h3>
+                            <div class="credits-row">
+                                <div class="credit">
+                                    <span class="role-tag">Project Lead</span>
+                                    <p class="person"><a href="https://faezah.vercel.app/index.html" target="_blank" rel="noopener">Faezeh Rohani, PhD</a></p>
+                                </div>
+                                <div class="credit">
+                                    <span class="role-tag">Researcher</span>
+                                    <p class="person"><a href="team.html#hekmatullah-zurmati">Hekmatullah Zurmati</a></p>
+                                </div>
+                                <div class="credit">
+                                    <span class="role-tag">Researcher</span>
+                                    <p class="person"><a href="team.html#sayediman-mostafavi">SayedIman Mostafavi</a></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
