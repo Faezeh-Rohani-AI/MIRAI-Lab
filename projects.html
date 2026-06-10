@@ -514,6 +514,11 @@
             stroke-width: 1;
         }
 
+        .award-badge--bronze svg {
+            fill: #cd7f32;
+            stroke: #cd7f32;
+        }
+
         .certificates-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -591,6 +596,22 @@
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 14px;
+        }
+
+        .team-credits .credits-row--four {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .team-credits .credits-row--five {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .team-credits .credits-row--four,
+            .team-credits .credits-row--five {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
 
         .team-credits .credit {
@@ -1012,6 +1033,59 @@
                                 <div class="credit">
                                     <span class="role-tag">Researcher</span>
                                     <p class="person"><a href="team.html#sayediman-mostafavi">SayedIman Mostafavi</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3rd Place at Üsküdar University -->
+                <article class="project-card award-card">
+                    <div class="project-hero">
+                        <span class="award-badge award-badge--bronze">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2l3 6 6.5.9-4.7 4.6 1.1 6.5L12 17l-5.9 3 1.1-6.5L2.5 8.9 9 8z" />
+                            </svg>
+                            3rd Place
+                        </span>
+                        <h2>Medical AI Research Project</h2>
+                        <p class="project-subtitle">Third Place &mdash; Engineering &amp; Natural Sciences Student Congress, &Uuml;sk&uuml;dar University</p>
+                    </div>
+                    <div class="project-body">
+                        <div class="certificates-grid">
+                            <div class="certificate-wrap">
+                                <img src="assets/projects/uskudar-3rd-place.jpg" alt="3rd Place Award &mdash; Üsküdar University"
+                                    onerror="this.parentElement.innerHTML='<div class=&quot;certificate-placeholder&quot;><svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot;><rect x=&quot;3&quot; y=&quot;4&quot; width=&quot;18&quot; height=&quot;14&quot; rx=&quot;2&quot;/><path d=&quot;M3 9h18&quot;/><circle cx=&quot;12&quot; cy=&quot;14&quot; r=&quot;2.5&quot;/><path d=&quot;M10.5 16l-1 4 2.5-1.4L14.5 20l-1-4&quot;/></svg><p>Award photo coming soon</p></div><p class=&quot;certificate-caption&quot;>3rd Place Award</p>';" />
+                                <p class="certificate-caption">3rd Place Award</p>
+                            </div>
+                            <div class="certificate-wrap">
+                                <img src="assets/projects/uskudar-3rd-tesekkur.jpg" alt="Teşekkür Belgesi — Üsküdar University Student Congress"
+                                    onerror="this.parentElement.innerHTML='<div class=&quot;certificate-placeholder&quot;><svg viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot;><rect x=&quot;3&quot; y=&quot;4&quot; width=&quot;18&quot; height=&quot;14&quot; rx=&quot;2&quot;/><path d=&quot;M3 9h18&quot;/><circle cx=&quot;12&quot; cy=&quot;14&quot; r=&quot;2.5&quot;/><path d=&quot;M10.5 16l-1 4 2.5-1.4L14.5 20l-1-4&quot;/></svg><p>Certificate photo coming soon</p></div><p class=&quot;certificate-caption&quot;>Te&scaron;ekk&uuml;r Belgesi &mdash; Student Congress</p>';" />
+                                <p class="certificate-caption">Te&scaron;ekk&uuml;r Belgesi &mdash; Student Congress</p>
+                            </div>
+                        </div>
+                        <div class="team-credits">
+                            <h3>Project Team</h3>
+                            <div class="credits-row credits-row--five">
+                                <div class="credit">
+                                    <span class="role-tag">Project Lead</span>
+                                    <p class="person"><a href="https://faezah.vercel.app/index.html" target="_blank" rel="noopener">Faezeh Rohani, PhD</a></p>
+                                </div>
+                                <div class="credit">
+                                    <span class="role-tag">Researcher</span>
+                                    <p class="person"><a href="team.html#hasan-alhatab">Hasan Alhatab</a></p>
+                                </div>
+                                <div class="credit">
+                                    <span class="role-tag">Researcher</span>
+                                    <p class="person"><a href="team.html#nour-salous">Nour Salous</a></p>
+                                </div>
+                                <div class="credit">
+                                    <span class="role-tag">Researcher</span>
+                                    <p class="person"><a href="team.html#salman-alkhudhari">Salman Alkhudhari</a></p>
+                                </div>
+                                <div class="credit">
+                                    <span class="role-tag">Researcher</span>
+                                    <p class="person"><a href="team.html#mohamed-jarrud">Mohamed Jarrud</a></p>
                                 </div>
                             </div>
                         </div>
