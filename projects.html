@@ -453,12 +453,30 @@
             box-shadow: 0 8px 24px rgba(10, 52, 112, 0.15);
         }
 
-        .video-wrap iframe {
+        .video-wrap iframe,
+        .video-wrap video {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
             border: 0;
+            background: #000;
+        }
+
+        .video-wrap video {
+            object-fit: contain;
+        }
+
+        .video-block {
+            margin-bottom: 28px;
+        }
+
+        .video-block .section-label {
+            margin: 0 0 14px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: 0.3px;
         }
 
         .project-link-row {
@@ -1007,6 +1025,15 @@
                         <p class="project-subtitle">First Place &mdash; Engineering &amp; Natural Sciences Student Congress, &Uuml;sk&uuml;dar University</p>
                     </div>
                     <div class="project-body">
+                        <div class="video-block">
+                            <h3 class="section-label">Project Video</h3>
+                            <div class="video-wrap">
+                                <video controls preload="metadata" poster="assets/projects/medical-ai-1st-place-poster.jpg">
+                                    <source src="assets/projects/medical-ai-1st-place.mp4" type="video/mp4">
+                                    Your browser does not support video playback.
+                                </video>
+                            </div>
+                        </div>
                         <div class="certificates-grid">
                             <div class="certificate-wrap">
                                 <img src="assets/projects/uskudar-1st-place.jpg" alt="1st Place Certificate &mdash; Üsküdar University"
